@@ -20,7 +20,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "Indigeo",
       "config": {
-        "googleMapsApiKey": "test"
+        "googleMapsApiKey": "test2"
       }
     },
     "android": {
