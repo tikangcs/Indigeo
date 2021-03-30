@@ -17,7 +17,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "Indigeo",
+      "config": {
+        "googleMapsApiKey": "test"
+      }
     },
     "android": {
       "adaptiveIcon": {
