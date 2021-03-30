@@ -43,7 +43,13 @@ export default function MapScreen(props) {
   return (
     <SafeAreaView style={styles.container}>
     <View>
-      <MapView style={styles.map} />
+      <MapView style={styles.map}
+       showsUserLocation={true}
+       region={{
+       latitude: 40.86310278,
+       longitude: -73.55590582,
+       latitudeDelta: 0.0022,
+       longitudeDelta: 0.0021}} />
       <Text style={styles.listTitle}>List of Flora in your Area</Text>
       <FlatList
         data={DATA}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, Dimensions, SafeAreaView, Button} from 'react-native';
 import {useDimensions, useDeviceOrientation} from '@react-native-community/hooks';
-import {MapView, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
 import MapScreen from './app/screens/MapScreen.js';
 import ViewItemScreen from './app/screens/ViewItemScreen.js';
@@ -14,7 +14,13 @@ export default function App() {
     //MAP SCREEN
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
-      <MapScreen provider={PROVIDER_GOOGLE} />
+      <MapScreen
+       showsUserLocation='true'
+       initialRegion={{
+       latitude: 37.78825,
+       longitude: -122.4324,
+       latitudeDelta: 0.0922,
+       longitudeDelta: 0.0421}} />
       <View style={styles.filter}>
         <Button
           style={styles.filterButtons}
