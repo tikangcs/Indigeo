@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MapView from 'react-native-maps';
-import { View, Text, Button, Dimensions, StyleSheet, SafeAreaView, Alert, FlatList, TouchableOpacity } from "react-native";
+import { Image, View, Text, Button, Dimensions, StyleSheet, SafeAreaView, Alert, FlatList, TouchableOpacity } from "react-native";
 
 const DATA = [
   {
@@ -37,30 +37,14 @@ export default function MapScreen(props) {
   const renderItem = ({ item }) => {
     const backgroundColor = item.id === selectedId ? '#6e3b6e' : '#f9c2ff';
 
-    return <Item item={item} onPress={() => setSelectedId(item.id)} style={{ backgroundColor }} />;
+    return <Item item={item} onPress={() => setSelectedId(item.id)} style={{ backgroundColor }}> <Image source={require("../assets/Sunflower.jpg")} /> </Item>
   };
 
   return (
-    <SafeAreaView>
-    <View style={styles.filter}>
-      <Button
-        style={styles.filterButtons}
-        title="Flora"
-        onPress={()=> Alert.alert('Filtered for Flora')}
-        accessibilityLabel='Filter for Flora'
-        color="orange"
-      />
-      <Button
-        style={styles.filterButtons}
-        title="Fauna"
-        onPress={()=> Alert.alert('Filtered for Fauna')}
-        accessibilityLabel='Filter for Fauna'
-        color="orange"
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
     <View>
       <MapView style={styles.map} />
-      <Text style={styles.listtitle}>List of Flora in your Area</Text>
+      <Text style={styles.listTitle}>List of Flora in your Area</Text>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -73,18 +57,14 @@ export default function MapScreen(props) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+
+  },
   map: {
     width: Dimensions.get('window').width,
     height: '40%',
   },
-  filter: {
-    flexDirection: "row",
-    justifyContent: "space-around"
-  },
-  filterButtons: {
-    backgroundColor: "green"
-  },
-  listtitle:{
+  listTitle:{
     fontSize: 32
   },
   item: {
