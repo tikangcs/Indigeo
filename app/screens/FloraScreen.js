@@ -34,7 +34,7 @@ const markers = [
       longitude: -73.5546788369571,
     },
     title: "Sunflower",
-    description: "FLORA",
+    description: "Helianthus",
     image: Images[0],
   },
   {
@@ -43,7 +43,7 @@ const markers = [
       longitude: -73.55545459126333,
     },
     title: "Chrysanthemum",
-    description: "FLORA",
+    description: "Chrysanthemum morifolium",
     image: Images[1],
   },
   {
@@ -51,8 +51,8 @@ const markers = [
       latitude: 40.86083561459188,
       longitude: -73.5557885302147,
     },
-    title: "Lavender",
-    description: "FLORA",
+    title: "Daisies",
+    description: "Bellis perennis",
     image: Images[2],
   },
   {
@@ -61,7 +61,7 @@ const markers = [
       longitude: -73.55690319073219,
     },
     title: "Hydrangea",
-    description: "FLORA",
+    description: "Hydrangea macrophylla",
     image: Images[3],
   },
   {
@@ -70,7 +70,7 @@ const markers = [
       longitude: -73.55428374719885,
     },
     title: "Lavender",
-    description: "FLORA",
+    description: "Lavandula",
     image: Images[4],
   },
 ]
@@ -81,8 +81,6 @@ const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
 export default function FloraScreen(props) {
-
-
   return (
     <SafeAreaView style={styles.container}>
       <MapView
