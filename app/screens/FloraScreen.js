@@ -16,6 +16,7 @@ const Images = [
   require('../assets/Chrysanthemum.jpg'),
   require('../assets/Daisies.jpg'),
   require('../assets/Hydrangea.jpg'),
+  require('../assets/Lavender.jpg'),
 ];
 
 const { width, height } = Dimensions.get("window");
@@ -25,18 +26,17 @@ const CARD_WIDTH = CARD_HEIGHT - 50;
 
 export default function MarkerScreen(props) {
   const [maps, setMaps] = useState('')
-  const [animation, setAnimation] = useState('')
   const [region, setRegion] = useState({
-      latitude: 45.52220671242907,
-      longitude: -122.6653281029795,
-      latitudeDelta: 0.04864195044303443,
-      longitudeDelta: 0.040142817690068,
+      latitude: 40.862611934273396,
+      longitude: -73.55573613742635,
+      latitudeDelta: 0.01864195044303443,
+      longitudeDelta: 0.010142817690068,
     });
   const [markers, setMarkers] = useState([
     {
       coordinate: {
-        latitude: 45.524548,
-        longitude: -122.6749817,
+        latitude: 40.86269909829106,
+        longitude: -73.5546788369571,
       },
       title: "Sunflower",
       description: "FLORA",
@@ -44,8 +44,8 @@ export default function MarkerScreen(props) {
     },
     {
       coordinate: {
-        latitude: 45.524698,
-        longitude: -122.6655507,
+        latitude: 40.86165217089088,
+        longitude: -73.55545459126333,
       },
       title: "Chrysanthemum",
       description: "FLORA",
@@ -53,8 +53,8 @@ export default function MarkerScreen(props) {
     },
     {
       coordinate: {
-        latitude: 45.5230786,
-        longitude: -122.6701034,
+        latitude: 40.86083561459188,
+        longitude: -73.5557885302147,
       },
       title: "Lavender",
       description: "FLORA",
@@ -62,12 +62,21 @@ export default function MarkerScreen(props) {
     },
     {
       coordinate: {
-        latitude: 45.521016,
-        longitude: -122.6561917,
+        latitude: 40.86188395758858,
+        longitude: -73.55690319073219,
+      },
+      title: "Hydrangea",
+      description: "FLORA",
+      image: Images[3],
+    },
+    {
+      coordinate: {
+        latitude: 40.860803307846666,
+        longitude: -73.55428374719885,
       },
       title: "Lavender",
       description: "FLORA",
-      image: Images[3],
+      image: Images[4],
     },
   ])
 
@@ -75,33 +84,24 @@ export default function MarkerScreen(props) {
     <View style={styles.container}>
       <MapView
         ref={(map) => (setMaps(map))}
+        showsUserLocation={true}
         initialRegion={region}
         style={styles.container}
         provider={'google'}
       >
         {markers.map((marker, index) => {
-            return (<MapView.Marker key={index} coordinate={marker.coordinate}>
+            return (
+            <MapView.Marker key={index} coordinate={marker.coordinate}>
               <View style={styles.marker} />
             </MapView.Marker>)
         })}
       </MapView>
+      <Text style={styles.title}>Flora Nearby:</Text>
       <Animated.ScrollView
         horizontal
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH}
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: {setAnimation},
-                },
-              },
-            },
-          ],
-          { useNativeDriver: true }
-        )}
         style={styles.scrollView}
         contentContainerStyle={styles.endPadding}
       >
@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
     overflow: "hidden",
+    borderWidth: 1
   },
   cardImage: {
     flex: 3,
@@ -171,9 +172,17 @@ const styles = StyleSheet.create({
     color: "#444",
   },
   marker: {
-    width: 20,
-    height: 20,
+    width: 13,
+    height: 13,
     borderRadius: 5,
     backgroundColor: "red",
   },
+  title: {
+    position: 'absolute',
+    bottom: 275,
+    left: 10,
+    fontSize: 32,
+    backgroundColor: 'white',
+    borderWidth: 1
+  }
 });
