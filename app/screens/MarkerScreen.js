@@ -12,10 +12,10 @@ import {
 import MapView from "react-native-maps";
 
 const Images = [
-  { uri: "../assets/Sunflower.jpg" },
-  { uri: "../assets/Chrysanthemum.jpg" },
-  { uri: "../assets/Lavender.jpg" },
-  { uri: "../assets/Daisies.jpg" },
+  require('../assets/Sunflower.jpg'),
+  require('../assets/Chrysanthemum.jpg'),
+  require('../assets/Daisies.jpg'),
+  require('../assets/Hydrangea.jpg'),
 ];
 
 const { width, height } = Dimensions.get("window");
@@ -106,10 +106,9 @@ export default function MarkerScreen(props) {
         contentContainerStyle={styles.endPadding}
       >
         {markers.map((marker, index) => {
-          console.log('1', marker.image.uri)
             return (<View style={styles.card} key={index}>
               <Image
-                source={require("../assets/Sunflower.jpg")}
+                source={marker.image}
                 style={styles.cardImage}
                 resizeMode="cover"
               />
