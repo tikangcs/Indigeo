@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text, Image, Button, SafeAreaView, StyleSheet, TouchableWithoutFeedback} from 'react-native'
 
 export default function ViewItemScreen({setCurrentView}) {
+  console.log(setCurrentView, 'setCurrentView(Flora)')
   return (
     <>
     <SafeAreaView style = {styles.container}>
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => console.log('hi')}>
         <View style={styles.closeIcon}>
           <Text style={styles.close}>X</Text>
         </View>
@@ -43,12 +44,12 @@ export default function ViewItemScreen({setCurrentView}) {
       <Text style={styles.detailsHeader}>FLORA FACTS</Text>
       <Text style={styles.detailsCategories}>Scientific Name</Text>
       <Text style={styles.details}>Helianthus</Text>
+      <Text style={styles.detailsCategories}>Bloom Period</Text>
+      <Text style={styles.details}> Summer & Fall (July - October)</Text>
+      <Text style={styles.detailsCategories}>Height</Text>
+      <Text style={styles.details}>Grows between 9-16 feet</Text>
       <Text style={styles.detailsCategories}>Origination</Text>
       <Text style={styles.details}>Mexico and Southern USA</Text>
-      <Text style={styles.detailsCategories}>Bloom Period</Text>
-      <Text style={styles.details}>July - October</Text>
-      <Text style={styles.detailsCategories}>Height</Text>
-      <Text style={styles.details}>9-16 feet</Text>
     </View>
     </>
   );
