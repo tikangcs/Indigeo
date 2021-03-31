@@ -13,16 +13,16 @@ import {
 import MapView from "react-native-maps";
 
 const Images = [
-  require('../assets/Sunflower.jpg'),
-  require('../assets/Chrysanthemum.jpg'),
-  require('../assets/Daisies.jpg'),
-  require('../assets/Hydrangea.jpg'),
-  require('../assets/Lavender.jpg'),
+  require('../assets/Squirrel.jpg'),
+  require('../assets/Rabbit.jpg'),
+  require('../assets/Racoon.jpg'),
+  require('../assets/CanadaGoose.jpg'),
+  require('../assets/Osprey.jpg'),
 ];
 
 const region = {
-  latitude: 40.862611934273396,
-  longitude: -73.55573613742635,
+  latitude: 40.87969634781522,
+  longitude: -73.56653112042775,
   latitudeDelta: 0.01864195044303443,
   longitudeDelta: 0.010142817690068,
 }
@@ -30,47 +30,47 @@ const region = {
 const markers = [
   {
     coordinate: {
-      latitude: 40.86269909829106,
-      longitude: -73.5546788369571,
+      latitude: 40.87982034843609,
+      longitude: -73.56455045178397,
     },
-    title: "Sunflower",
-    description: "FLORA",
+    title: "Squirrel",
+    description: "Sciuridae",
     image: Images[0],
   },
   {
     coordinate: {
-      latitude: 40.86165217089088,
-      longitude: -73.55545459126333,
+      latitude: 40.878287761058644,
+      longitude: -73.5668223419099,
     },
-    title: "Chrysanthemum",
-    description: "FLORA",
+    title: "Rabbit",
+    description: "Oryctolagus cuniculus",
     image: Images[1],
   },
   {
     coordinate: {
-      latitude: 40.86083561459188,
-      longitude: -73.5557885302147,
+      latitude: 40.88062085731135,
+      longitude: -73.56946349262996,
     },
-    title: "Lavender",
-    description: "FLORA",
+    title: "Racoon",
+    description: "Procyon lotor",
     image: Images[2],
   },
   {
     coordinate: {
-      latitude: 40.86188395758858,
-      longitude: -73.55690319073219,
+      latitude: 40.881617598194744,
+      longitude: -73.56618790661248,
     },
-    title: "Hydrangea",
-    description: "FLORA",
+    title: "Canada Goose",
+    description: "Branta canadensis",
     image: Images[3],
   },
   {
     coordinate: {
-      latitude: 40.860803307846666,
-      longitude: -73.55428374719885,
+      latitude: 40.88222021016556,
+      longitude: -73.56372931799889,
     },
-    title: "Lavender",
-    description: "FLORA",
+    title: "Osprey",
+    description: "Pandion haliaetus",
     image: Images[4],
   },
 ]
@@ -80,7 +80,7 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-export default function FloraScreen(props) {
+export default function FaunaScreen(props) {
 
 
   return (
@@ -98,7 +98,7 @@ export default function FloraScreen(props) {
             </MapView.Marker>)
         })}
       </MapView>
-      <Text style={styles.title}>Flora Nearby</Text>
+      <Text style={styles.title}>Fauna Nearby</Text>
       <Animated.ScrollView
         horizontal
         scrollEventThrottle={1}
@@ -177,13 +177,13 @@ const styles = StyleSheet.create({
     width: 13,
     height: 13,
     borderRadius: 5,
-    backgroundColor: "red",
+    backgroundColor: "blue",
   },
   title: {
     position: 'absolute',
     bottom: 275,
     left: 10,
-    fontSize: 33,
+    fontSize: 30,
     backgroundColor: 'white',
     borderWidth: 1
   }

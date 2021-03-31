@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar';
 import MapScreen from './app/screens/MapScreen.js';
 import ViewItemScreen from './app/screens/ViewItemScreen.js';
 import FloraScreen from './app/screens/FloraScreen.js';
+import FaunaScreen from './app/screens/FaunaScreen.js';
 
 export default function App() {
   // console.log(useDimensions())
@@ -38,7 +39,8 @@ export default function App() {
     // <ViewItemScreen />
 
     //MARKER VIEW SCREEN
-    <FloraScreen />
+    // <FloraScreen />
+    <FaunaScreen />
   );
 }
 
