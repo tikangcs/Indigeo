@@ -13,11 +13,11 @@ import {
 import MapView from "react-native-maps";
 
 const Images = [
-  require('../assets/Sunflower.jpg'),
   require('../assets/Chrysanthemum.jpg'),
   require('../assets/Daisies.jpg'),
   require('../assets/Hydrangea.jpg'),
   require('../assets/Lavender.jpg'),
+  require('../assets/Sunflower.jpg'),
 ];
 
 const region = {
@@ -30,21 +30,12 @@ const region = {
 const markers = [
   {
     coordinate: {
-      latitude: 40.86269909829106,
-      longitude: -73.5546788369571,
-    },
-    title: "Sunflower",
-    description: "Helianthus",
-    image: Images[0],
-  },
-  {
-    coordinate: {
       latitude: 40.86165217089088,
       longitude: -73.55545459126333,
     },
     title: "Chrysanthemum",
     description: "Chrysanthemum morifolium",
-    image: Images[1],
+    image: Images[0],
   },
   {
     coordinate: {
@@ -53,7 +44,7 @@ const markers = [
     },
     title: "Daisies",
     description: "Bellis perennis",
-    image: Images[2],
+    image: Images[1],
   },
   {
     coordinate: {
@@ -62,7 +53,7 @@ const markers = [
     },
     title: "Hydrangea",
     description: "Hydrangea macrophylla",
-    image: Images[3],
+    image: Images[2],
   },
   {
     coordinate: {
@@ -71,6 +62,15 @@ const markers = [
     },
     title: "Lavender",
     description: "Lavandula",
+    image: Images[3],
+  },
+  {
+    coordinate: {
+      latitude: 40.86269909829106,
+      longitude: -73.5546788369571,
+    },
+    title: "Sunflower",
+    description: "Helianthus",
     image: Images[4],
   },
 ]
@@ -80,9 +80,9 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-export default function FloraScreen(props) {
+export default function FloraScreen({setCurrentView}) {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <MapView
         showsUserLocation={true}
         initialRegion={region}
@@ -121,7 +121,7 @@ export default function FloraScreen(props) {
             </View>)
         })}
       </Animated.ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 

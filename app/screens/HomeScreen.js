@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text, Image } from "react-native";
+import { ImageBackground, StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
 
 export default function HomeScreen(props) {
   return (
@@ -11,12 +11,16 @@ export default function HomeScreen(props) {
         style={styles.logo}
         source={require('../assets/Logo2.png')} />
       <View style={styles.buttonContainer}>
-        <View style={styles.floraButton}>
-          <Text style={styles.buttonText}>FLORA</Text>
-        </View>
-        <View style={styles.faunaButton}>
-          <Text style={styles.buttonText}>FAUNA</Text>
-        </View>
+        <TouchableWithoutFeedback>
+          <View style={styles.floraButton}>
+            <Text style={styles.buttonText}>FLORA</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback>
+          <View style={styles.faunaButton}>
+            <Text style={styles.buttonText}>FAUNA</Text>
+          </View>
+        </TouchableWithoutFeedback>
       </View>
 
     </ImageBackground>

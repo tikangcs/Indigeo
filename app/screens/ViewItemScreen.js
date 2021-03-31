@@ -5,7 +5,11 @@ export default function ViewItemScreen(props) {
   return (
     <>
     <SafeAreaView style = {styles.container}>
-      <View style={styles.closeIcon}></View>
+      <TouchableWithoutFeedback>
+        <View style={styles.closeIcon}>
+          <Text style={styles.close}>X</Text>
+        </View>
+      </TouchableWithoutFeedback>
       <Text style={styles.title}>Sunflower</Text>
       <Image
         resizeMode="contain"
@@ -16,21 +20,35 @@ export default function ViewItemScreen(props) {
     <View style={styles.tagContainer}>
       <TouchableWithoutFeedback>
         <View style={styles.tags}>
-          <Text style={styles.tagText}> Edible</Text>
+          <Text style={styles.tagText}> Near by </Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback>
         <View style={styles.tags}>
-          <Text style={styles.tagText}> Endangered</Text>
+          <Text style={styles.tagText}> Popular </Text>
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback>
+        <View style={styles.tags}>
+          <Text style={styles.tagText}> Protected </Text>
+        </View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback>
+        <View style={styles.tags}>
+          <Text style={styles.tagText}> In Season </Text>
         </View>
       </TouchableWithoutFeedback>
     </View>
     <View style={styles.detailContainer}>
-      <Text style={styles.details}>FLORA FACTS</Text>
-      <Text style={styles.details}>Common Name: Sunflower</Text>
-      <Text style={styles.details}>Scientific Name: Helianthus</Text>
-      <Text style={styles.details}>Taxonomy: Kingdom:	Plantae, Clade:	Tracheophytes, Clade:	Angiosperms, Clade:	Eudicots, Clade:	Asterids, Order:	Asterales, Family:	Asteraceae, Subfamily:	Asteroideae, Supertribe:	Helianthodae, Tribe:	Heliantheae, Genus:	Helianthus</Text>
-      <Text style={styles.details}>Fun Fact: The seed and sprout have many medicinal uses</Text>
+      <Text style={styles.detailsHeader}>FLORA FACTS</Text>
+      <Text style={styles.detailsCategories}>Scientific Name</Text>
+      <Text style={styles.details}>Helianthus</Text>
+      <Text style={styles.detailsCategories}>Origination</Text>
+      <Text style={styles.details}>Mexico and Southern USA</Text>
+      <Text style={styles.detailsCategories}>Bloom Period</Text>
+      <Text style={styles.details}>July - October</Text>
+      <Text style={styles.detailsCategories}>Height</Text>
+      <Text style={styles.details}>9-16 feet</Text>
     </View>
     </>
   );
@@ -40,19 +58,24 @@ const styles = StyleSheet.create({
   closeIcon: {
     width: 50,
     height: 50,
-    backgroundColor: "#fc5c65",
+    backgroundColor: "rgba(96,101,121,.1)",
     position:"absolute",
     top: 60,
     right: 20,
   },
+  close: {
+    fontSize: 40,
+    alignSelf: 'center',
+    top: 2
+  },
   container: {
-    backgroundColor: "dodgerblue",
     flex: 2.5,
   },
   title: {
     fontSize: 50,
+    fontWeight: 'bold',
     top:20,
-    left: 110
+    left: 105,
   },
   image: {
     width: 800,
@@ -61,26 +84,38 @@ const styles = StyleSheet.create({
     right: 180,
   },
   tagContainer:{
-    backgroundColor: "orange",
     flex: 0.2,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    marginBottom: 10
   },
   tags: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#6ff7b1',
     padding: 10,
-    marginHorizontal: 20
+    marginHorizontal: 10
   },
   tagText: {
-    fontSize: 18
+    fontSize: 16
   },
   detailContainer: {
     width: '100%',
     flex: 1.7,
     top: 20
   },
+  detailsHeader: {
+    fontSize: 30,
+    alignSelf: 'center',
+    marginBottom: 10
+  },
+  detailsCategories: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    left: 15
+  },
   details: {
     fontSize:22,
+    left: 30,
+    marginBottom: 10
   }
 })

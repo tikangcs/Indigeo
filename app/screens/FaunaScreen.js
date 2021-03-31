@@ -80,7 +80,7 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-export default function FaunaScreen(props) {
+export default function FaunaScreen({setCurrentView}) {
 
 
   return (
