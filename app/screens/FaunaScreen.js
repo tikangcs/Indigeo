@@ -84,7 +84,7 @@ export default function FaunaScreen(props) {
 
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <MapView
         showsUserLocation={true}
         initialRegion={region}
@@ -123,7 +123,7 @@ export default function FaunaScreen(props) {
             </View>)
         })}
       </Animated.ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
