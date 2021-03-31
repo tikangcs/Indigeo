@@ -7,9 +7,9 @@ import ViewItemScreen from './app/screens/ViewItemScreen.js';
 export default function App() {
   const [currentView, setCurrentView] = useState('Home');
   return (
-    currentView === 'Flora' ? <FloraScreen /> :
-    currentView === 'Fauna' ? <FaunaScreen /> :
-    currentView === 'Item' ? <ViewItemScreen />:
-    <HomeScreen />
+    currentView === 'Flora' ? <FloraScreen setCurrentView={setCurrentView} /> :
+    currentView === 'Fauna' ? <FaunaScreen setCurrentView={setCurrentView} /> :
+    currentView === 'Item' ? <ViewItemScreen setCurrentView={setCurrentView} />:
+    <HomeScreen setCurrentView={setCurrentView} />
   );
 }

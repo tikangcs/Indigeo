@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, Button, SafeAreaView, StyleSheet, TouchableWithoutFeedback} from 'react-native'
 
-export default function ViewItemScreen(props) {
+export default function ViewItemScreen({setCurrentView}) {
   return (
     <>
     <SafeAreaView style = {styles.container}>

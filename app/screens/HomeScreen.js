@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
 
-export default function HomeScreen(props) {
+export default function HomeScreen({setCurrentView}) {
   return (
     <ImageBackground
       style={styles.background}
@@ -9,14 +9,14 @@ export default function HomeScreen(props) {
     >
       <Image
         style={styles.logo}
-        source={require('../assets/Logo2.png')} />
+        source={require('../assets/Logo.png')} />
       <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => setCurrentView('Flora')}>
           <View style={styles.floraButton}>
             <Text style={styles.buttonText}>FLORA</Text>
           </View>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={() => setCurrentView('Fauna')}>
           <View style={styles.faunaButton}>
             <Text style={styles.buttonText}>FAUNA</Text>
           </View>
