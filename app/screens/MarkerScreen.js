@@ -38,8 +38,8 @@ export default function MarkerScreen(props) {
         latitude: 45.524548,
         longitude: -122.6749817,
       },
-      title: "FLORA",
-      description: "Sunflowers",
+      title: "Sunflower",
+      description: "FLORA",
       image: Images[0],
     },
     {
@@ -47,8 +47,8 @@ export default function MarkerScreen(props) {
         latitude: 45.524698,
         longitude: -122.6655507,
       },
-      title: "FLORA",
-      description: "Chrysanthemum",
+      title: "Chrysanthemum",
+      description: "FLORA",
       image: Images[1],
     },
     {
@@ -56,8 +56,8 @@ export default function MarkerScreen(props) {
         latitude: 45.5230786,
         longitude: -122.6701034,
       },
-      title: "FLORA",
-      description: "Lavendar",
+      title: "Lavender",
+      description: "FLORA",
       image: Images[2],
     },
     {
@@ -65,8 +65,8 @@ export default function MarkerScreen(props) {
         latitude: 45.521016,
         longitude: -122.6561917,
       },
-      title: "FLORA",
-      description: "Daisies",
+      title: "Lavender",
+      description: "FLORA",
       image: Images[3],
     },
   ])
@@ -81,10 +81,7 @@ export default function MarkerScreen(props) {
       >
         {markers.map((marker, index) => {
             return (<MapView.Marker key={index} coordinate={marker.coordinate}>
-              <Animated.View style={[styles.markerWrap]}>
-                <Animated.View style={[styles.ring]} />
-                <View style={styles.marker} />
-              </Animated.View>
+              <View style={styles.marker} />
             </MapView.Marker>)
         })}
       </MapView>
@@ -93,38 +90,37 @@ export default function MarkerScreen(props) {
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH}
-        // onScroll={Animated.event(
-        //   [
-        //     {
-        //       nativeEvent: {
-        //         contentOffset: {
-        //           x: {setAnimation},
-        //         },
-        //       },
-        //     },
-        //   ],
-        //   { useNativeDriver: true }
-        // )}
+        onScroll={Animated.event(
+          [
+            {
+              nativeEvent: {
+                contentOffset: {
+                  x: {setAnimation},
+                },
+              },
+            },
+          ],
+          { useNativeDriver: true }
+        )}
         style={styles.scrollView}
         contentContainerStyle={styles.endPadding}
       >
-        {/* {markers.map((marker, index) => (
-          <View style={styles.card} key={index}>
-            <Image
-              source={marker.image}
-              style={styles.cardImage}
-              resizeMode="cover"
-            />
-            <View style={styles.textContent}>
-              <Text numberOfLines={1} style={styles.cardtitle}>
-                {marker.title}
-              </Text>
-              <Text numberOfLines={1} style={styles.cardDescription}>
-                {marker.description}
-              </Text>
-            </View>
-          </View>
-        ))}; */}
+        {markers.map((marker, index) => {
+          console.log('1', marker.image.uri)
+            return (<View style={styles.card} key={index}>
+              <Image
+                source={require("../assets/Sunflower.jpg")}
+                style={styles.cardImage}
+                resizeMode="cover"
+              />
+              <View style={styles.textContent}>
+                <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
+                <Text numberOfLines={1} style={styles.cardDescription}>
+                  {marker.description}
+                </Text>
+              </View>
+            </View>)
+        })}
       </Animated.ScrollView>
     </View>
   );
@@ -175,23 +171,10 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#444",
   },
-  markerWrap: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   marker: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: "rgba(130,4,150, 0.9)",
-  },
-  ring: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: "rgba(130,4,150, 0.3)",
-    position: "absolute",
-    borderWidth: 1,
-    borderColor: "rgba(130,4,150, 0.5)",
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    backgroundColor: "red",
   },
 });

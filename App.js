@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Dimensions, SafeAreaView, Button} from 'react-native';
+import { StyleSheet, Image, Text, View, Dimensions, SafeAreaView, Button} from 'react-native';
 import {useDimensions, useDeviceOrientation} from '@react-native-community/hooks';
 import MapView from 'react-native-maps';
 import { StatusBar } from 'expo-status-bar';
