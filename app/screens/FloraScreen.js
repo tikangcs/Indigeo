@@ -9,15 +9,16 @@ import {
   Animated,
   Image,
   Dimensions,
+  TouchableWithoutFeedback
 } from "react-native";
 import MapView from "react-native-maps";
 
 const Images = [
   require('../assets/Chrysanthemum.jpg'),
   require('../assets/Daisies.jpg'),
+  require('../assets/Sunflower.jpg'),
   require('../assets/Hydrangea.jpg'),
   require('../assets/Lavender.jpg'),
-  require('../assets/Sunflower.jpg'),
 ];
 
 const region = {
@@ -48,12 +49,21 @@ const markers = [
   },
   {
     coordinate: {
+      latitude: 40.86269909829106,
+      longitude: -73.5546788369571,
+    },
+    title: "Sunflower",
+    description: "Helianthus",
+    image: Images[2],
+  },
+  {
+    coordinate: {
       latitude: 40.86188395758858,
       longitude: -73.55690319073219,
     },
     title: "Hydrangea",
     description: "Hydrangea macrophylla",
-    image: Images[2],
+    image: Images[3],
   },
   {
     coordinate: {
@@ -62,15 +72,6 @@ const markers = [
     },
     title: "Lavender",
     description: "Lavandula",
-    image: Images[3],
-  },
-  {
-    coordinate: {
-      latitude: 40.86269909829106,
-      longitude: -73.5546788369571,
-    },
-    title: "Sunflower",
-    description: "Helianthus",
     image: Images[4],
   },
 ]
@@ -107,17 +108,19 @@ export default function FloraScreen({setCurrentView}) {
       >
         {markers.map((marker, index) => {
             return (<View style={styles.card} key={index}>
-              <Image
-                source={marker.image}
-                style={styles.cardImage}
-                resizeMode="cover"
-              />
-              <View style={styles.textContent}>
-                <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
-                <Text numberOfLines={1} style={styles.cardDescription}>
-                  {marker.description}
-                </Text>
-              </View>
+              <TouchableWithoutFeedback onPress={() => setCurrentView('Item')}>
+                  <Image
+                    source={marker.image}
+                    style={styles.cardImage}
+                    resizeMode="cover"
+                    />
+              </TouchableWithoutFeedback>
+                  <View style={styles.textContent}>
+                    <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
+                    <Text numberOfLines={1} style={styles.cardDescription}>
+                      {marker.description}
+                    </Text>
+                  </View>
             </View>)
         })}
       </Animated.ScrollView>

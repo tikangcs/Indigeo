@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, Image, Button, SafeAreaView, StyleSheet, TouchableWithoutFeedback} from 'react-native'
+import { View, Text, Image, Button, SafeAreaView, StyleSheet, TouchableHighlight, TouchableWithoutFeedback} from 'react-native'
 
 export default function ViewItemScreen({setCurrentView}) {
-  console.log(setCurrentView, 'setCurrentView(Flora)')
+
   return (
     <>
     <SafeAreaView style = {styles.container}>
-      <TouchableWithoutFeedback onPress={() => console.log('hi')}>
+      <TouchableHighlight onPress={() => setCurrentView('Flora')}>
         <View style={styles.closeIcon}>
           <Text style={styles.close}>X</Text>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableHighlight>
       <Text style={styles.title}>Sunflower</Text>
       <Image
         resizeMode="contain"
@@ -21,12 +21,12 @@ export default function ViewItemScreen({setCurrentView}) {
     <View style={styles.tagContainer}>
       <TouchableWithoutFeedback>
         <View style={styles.tags}>
-          <Text style={styles.tagText}> Near by </Text>
+          <Text style={styles.tagText}> Popular </Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback>
         <View style={styles.tags}>
-          <Text style={styles.tagText}> Popular </Text>
+          <Text style={styles.tagText}> Safe </Text>
         </View>
       </TouchableWithoutFeedback>
       <TouchableWithoutFeedback>
