@@ -9,6 +9,7 @@ import {
   Animated,
   Image,
   Dimensions,
+  TouchableHighlight
 } from "react-native";
 import MapView from "react-native-maps";
 
@@ -98,7 +99,9 @@ export default function FaunaScreen({setCurrentView}) {
             </MapView.Marker>)
         })}
       </MapView>
-      <Text style={styles.title}>Fauna Nearby</Text>
+      <TouchableHighlight onPress={() => setCurrentView('Home')}>
+        <Text style={styles.title}>Fauna Nearby</Text>
+      </TouchableHighlight>
       <Animated.ScrollView
         horizontal
         scrollEventThrottle={1}
@@ -186,5 +189,5 @@ const styles = StyleSheet.create({
     fontSize: 30,
     backgroundColor: 'white',
     borderWidth: 1
-  }
+  },
 });

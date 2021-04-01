@@ -97,7 +97,9 @@ export default function FloraScreen({setCurrentView}) {
             </MapView.Marker>)
         })}
       </MapView>
-      <Text style={styles.title}>Flora Nearby</Text>
+      <TouchableWithoutFeedback onPress={() => setCurrentView('Home')}>
+        <Text style={styles.title}>Flora Nearby</Text>
+      </TouchableWithoutFeedback>
       <Animated.ScrollView
         horizontal
         scrollEventThrottle={1}
