@@ -88,6 +88,7 @@ export default function FaunaScreen({setCurrentView}) {
     <View style={styles.container}>
       <MapView
         showsUserLocation={true}
+        followsUserLocation={true}
         initialRegion={region}
         style={styles.container}
         provider={'google'}

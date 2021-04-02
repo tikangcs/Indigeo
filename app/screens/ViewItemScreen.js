@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: "rgba(96,101,121,.1)",
     position:"absolute",
-    top: 60,
+    top: 10,
     right: 20,
   },
   close: {
