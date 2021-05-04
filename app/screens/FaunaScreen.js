@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -9,16 +9,16 @@ import {
   Animated,
   Image,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
 } from "react-native";
 import MapView from "react-native-maps";
 
 const Images = [
-  require('../assets/Squirrel.jpg'),
-  require('../assets/Rabbit.jpg'),
-  require('../assets/Racoon.jpg'),
-  require('../assets/CanadaGoose.jpg'),
-  require('../assets/Osprey.jpg'),
+  require("../assets/Squirrel.jpg"),
+  require("../assets/Rabbit.jpg"),
+  require("../assets/Racoon.jpg"),
+  require("../assets/CanadaGoose.jpg"),
+  require("../assets/Osprey.jpg"),
 ];
 
 const region = {
@@ -26,7 +26,7 @@ const region = {
   longitude: -73.56653112042775,
   latitudeDelta: 0.01864195044303443,
   longitudeDelta: 0.010142817690068,
-}
+};
 
 const markers = [
   {
@@ -74,16 +74,13 @@ const markers = [
     description: "Pandion haliaetus",
     image: Images[4],
   },
-]
+];
 
 const { width, height } = Dimensions.get("window");
+const CARD_HEIGHT = height / 5.5;
+const CARD_WIDTH = CARD_HEIGHT - 20;
 
-const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
-
-export default function FaunaScreen({setCurrentView}) {
-
-
+export default function FaunaScreen({ setCurrentView }) {
   return (
     <View style={styles.container}>
       <MapView
@@ -91,16 +88,17 @@ export default function FaunaScreen({setCurrentView}) {
         followsUserLocation={true}
         initialRegion={region}
         style={styles.container}
-        provider={'google'}
+        provider={"google"}
       >
         {markers.map((marker, index) => {
-            return (
+          return (
             <MapView.Marker key={index} coordinate={marker.coordinate}>
               <View style={styles.marker} />
-            </MapView.Marker>)
+            </MapView.Marker>
+          );
         })}
       </MapView>
-      <TouchableHighlight onPress={() => setCurrentView('Home')}>
+      <TouchableHighlight onPress={() => setCurrentView("Home")}>
         <Text style={styles.title}>Fauna Nearby</Text>
       </TouchableHighlight>
       <Animated.ScrollView
@@ -112,19 +110,23 @@ export default function FaunaScreen({setCurrentView}) {
         contentContainerStyle={styles.endPadding}
       >
         {markers.map((marker, index) => {
-            return (<View style={styles.card} key={index}>
+          return (
+            <View style={styles.card} key={index}>
               <Image
                 source={marker.image}
                 style={styles.cardImage}
                 resizeMode="cover"
               />
               <View style={styles.textContent}>
-                <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
+                <Text numberOfLines={1} style={styles.cardtitle}>
+                  {marker.title}
+                </Text>
                 <Text numberOfLines={1} style={styles.cardDescription}>
                   {marker.description}
                 </Text>
               </View>
-            </View>)
+            </View>
+          );
         })}
       </Animated.ScrollView>
     </View>
@@ -133,13 +135,16 @@ export default function FaunaScreen({setCurrentView}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.88,
+  },
+  title: {
+    top: 5,
+    left: 10,
+    fontSize: 25,
   },
   scrollView: {
     position: "absolute",
-    bottom: 30,
-    left: 0,
-    right: 0,
+    bottom: -90,
     paddingVertical: 10,
   },
   endPadding: {
@@ -157,7 +162,7 @@ const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
     overflow: "hidden",
-    borderWidth: 1
+    borderWidth: 1,
   },
   cardImage: {
     flex: 3,
@@ -169,12 +174,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardtitle: {
-    fontSize: 12,
+    fontSize: 16,
     marginTop: 5,
     fontWeight: "bold",
   },
   cardDescription: {
-    fontSize: 12,
+    fontSize: 10,
     color: "#444",
   },
   marker: {
@@ -182,13 +187,5 @@ const styles = StyleSheet.create({
     height: 13,
     borderRadius: 5,
     backgroundColor: "blue",
-  },
-  title: {
-    position: 'absolute',
-    bottom: 275,
-    left: 10,
-    fontSize: 30,
-    backgroundColor: 'white',
-    borderWidth: 1
   },
 });

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -9,16 +9,16 @@ import {
   Animated,
   Image,
   Dimensions,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
 } from "react-native";
 import MapView from "react-native-maps";
 
 const Images = [
-  require('../assets/Chrysanthemum.jpg'),
-  require('../assets/Daisies.jpg'),
-  require('../assets/Sunflower.jpg'),
-  require('../assets/Hydrangea.jpg'),
-  require('../assets/Lavender.jpg'),
+  require("../assets/Chrysanthemum.jpg"),
+  require("../assets/Daisies.jpg"),
+  require("../assets/Sunflower.jpg"),
+  require("../assets/Hydrangea.jpg"),
+  require("../assets/Lavender.jpg"),
 ];
 
 const region = {
@@ -26,7 +26,7 @@ const region = {
   longitude: -73.55573613742635,
   latitudeDelta: 0.01864195044303443,
   longitudeDelta: 0.010142817690068,
-}
+};
 
 const markers = [
   {
@@ -74,30 +74,30 @@ const markers = [
     description: "Lavandula",
     image: Images[4],
   },
-]
+];
 
 const { width, height } = Dimensions.get("window");
+const CARD_HEIGHT = height / 5.5;
+const CARD_WIDTH = CARD_HEIGHT - 20;
 
-const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
-
-export default function FloraScreen({setCurrentView}) {
+export default function MapScreen({ setCurrentView }) {
   return (
     <View style={styles.container}>
       <MapView
         showsUserLocation={true}
         initialRegion={region}
         style={styles.container}
-        provider={'google'}
+        provider={"google"}
       >
         {markers.map((marker, index) => {
-            return (
+          return (
             <MapView.Marker key={index} coordinate={marker.coordinate}>
               <View style={styles.marker} />
-            </MapView.Marker>)
+            </MapView.Marker>
+          );
         })}
       </MapView>
-      <TouchableWithoutFeedback onPress={() => setCurrentView('Home')}>
+      <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
         <Text style={styles.title}>Flora Nearby</Text>
       </TouchableWithoutFeedback>
       <Animated.ScrollView
@@ -109,21 +109,25 @@ export default function FloraScreen({setCurrentView}) {
         contentContainerStyle={styles.endPadding}
       >
         {markers.map((marker, index) => {
-            return (<View style={styles.card} key={index}>
-              <TouchableWithoutFeedback onPress={() => setCurrentView('Item')}>
-                  <Image
-                    source={marker.image}
-                    style={styles.cardImage}
-                    resizeMode="cover"
-                    />
+          return (
+            <View style={styles.card} key={index}>
+              <TouchableWithoutFeedback onPress={() => setCurrentView("Item")}>
+                <Image
+                  source={marker.image}
+                  style={styles.cardImage}
+                  resizeMode="cover"
+                />
               </TouchableWithoutFeedback>
-                  <View style={styles.textContent}>
-                    <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
-                    <Text numberOfLines={1} style={styles.cardDescription}>
-                      {marker.description}
-                    </Text>
-                  </View>
-            </View>)
+              <View style={styles.textContent}>
+                <Text numberOfLines={1} style={styles.cardtitle}>
+                  {marker.title}
+                </Text>
+                <Text numberOfLines={1} style={styles.cardDescription}>
+                  {marker.description}
+                </Text>
+              </View>
+            </View>
+          );
         })}
       </Animated.ScrollView>
     </View>
@@ -132,13 +136,16 @@ export default function FloraScreen({setCurrentView}) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0.88,
+  },
+  title: {
+    top: 5,
+    left: 10,
+    fontSize: 25,
   },
   scrollView: {
     position: "absolute",
-    bottom: 30,
-    left: 0,
-    right: 0,
+    bottom: -90,
     paddingVertical: 10,
   },
   endPadding: {
@@ -156,7 +163,7 @@ const styles = StyleSheet.create({
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
     overflow: "hidden",
-    borderWidth: 1
+    borderWidth: 1,
   },
   cardImage: {
     flex: 3,
@@ -168,12 +175,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardtitle: {
-    fontSize: 12,
+    fontSize: 16,
     marginTop: 5,
     fontWeight: "bold",
   },
   cardDescription: {
-    fontSize: 12,
+    fontSize: 10,
     color: "#444",
   },
   marker: {
@@ -182,12 +189,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "red",
   },
-  title: {
-    position: 'absolute',
-    bottom: 275,
-    left: 10,
-    fontSize: 33,
-    backgroundColor: 'white',
-    borderWidth: 1
-  }
 });

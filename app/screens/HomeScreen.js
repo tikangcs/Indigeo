@@ -1,28 +1,35 @@
-import React from 'react';
-import { ImageBackground, StyleSheet, View, Text, Image, TouchableWithoutFeedback } from "react-native";
+import React from "react";
+import {
+  ImageBackground,
+  StyleSheet,
+  View,
+  Text,
+  TextInput,
+  Button,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 
-export default function HomeScreen({setCurrentView}) {
+export default function HomeScreen({ setCurrentView }) {
   return (
     <ImageBackground
       style={styles.background}
-      source={require('../assets/Home5.jpg')}
+      source={require("../assets/Home5.jpg")}
     >
-      <Image
-        style={styles.logo}
-        source={require('../assets/Logo.png')} />
+      <Image style={styles.logo} source={require("../assets/Logo.png")} />
+
       <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback onPress={() => setCurrentView('Flora')}>
-          <View style={styles.floraButton}>
-            <Text style={styles.buttonText}>FLORA</Text>
+        <TouchableWithoutFeedback onPress={() => setCurrentView("Login")}>
+          <View style={styles.loginButton}>
+            <Text style={styles.buttonText}>LOGIN</Text>
           </View>
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => setCurrentView('Fauna')}>
-          <View style={styles.faunaButton}>
-            <Text style={styles.buttonText}>FAUNA</Text>
+        <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
+          <View style={styles.guestButton}>
+            <Text style={styles.buttonText}>GUEST</Text>
           </View>
         </TouchableWithoutFeedback>
       </View>
-
     </ImageBackground>
   );
 }
@@ -32,37 +39,38 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
   },
-  buttonContainer: {
-    flexDirection:'row'
-  },
-  floraButton: {
-    width: '50%',
-    height: 70,
-    backgroundColor: 'rgba(166, 204, 241, 0.7)',
-    flexDirection: 'row',
-    borderWidth: 1,
-  },
-  faunaButton: {
-    width: '50%',
-    height: 70,
-    backgroundColor: 'rgba(166, 204, 241, 0.7)',
-    flexDirection: 'row',
-    borderWidth: 1,
-    color: 'rgba(3, 54, 1, 1)',
-  },
   logo: {
-    position: 'absolute',
+    flex: 2,
+    position: "absolute",
     top: 40,
-    alignSelf: 'center',
+    alignSelf: "center",
     height: 300,
     width: 300,
-    resizeMode: 'stretch'
+    resizeMode: "stretch",
+  },
+  buttonContainer: {
+    flexDirection: "row",
   },
   buttonText: {
-    color: 'rgb(92,50,3)',
+    color: "rgb(92,50,3)",
     fontSize: 30,
-    flexDirection: 'column',
-    alignSelf: 'center',
-    left: 60
-  }
-})
+    flexDirection: "column",
+    alignSelf: "center",
+    left: 60,
+  },
+  loginButton: {
+    width: "50%",
+    height: 70,
+    backgroundColor: "rgba(166, 204, 241, 0.7)",
+    flexDirection: "row",
+    borderWidth: 1,
+  },
+  guestButton: {
+    width: "50%",
+    height: 70,
+    backgroundColor: "rgba(166, 204, 241, 0.7)",
+    flexDirection: "row",
+    borderWidth: 1,
+    color: "rgba(3, 54, 1, 1)",
+  },
+});
