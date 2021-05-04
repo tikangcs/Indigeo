@@ -78,7 +78,7 @@ const markers = [
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
-const CARD_WIDTH = CARD_HEIGHT - 20;
+const CARD_WIDTH = CARD_HEIGHT - 10;
 
 export default function MapScreen({ setCurrentView }) {
   return (
@@ -86,7 +86,7 @@ export default function MapScreen({ setCurrentView }) {
       <MapView
         showsUserLocation={true}
         initialRegion={region}
-        style={styles.container}
+        style={styles.map}
         provider={"google"}
       >
         {markers.map((marker, index) => {
@@ -97,76 +97,107 @@ export default function MapScreen({ setCurrentView }) {
           );
         })}
       </MapView>
-      <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
-        <Text style={styles.title}>Flora Nearby</Text>
-      </TouchableWithoutFeedback>
-      <Animated.ScrollView
-        horizontal
-        scrollEventThrottle={1}
-        showsHorizontalScrollIndicator={false}
-        snapToInterval={CARD_WIDTH}
-        style={styles.scrollView}
-        contentContainerStyle={styles.endPadding}
-      >
-        {markers.map((marker, index) => {
-          return (
-            <View style={styles.card} key={index}>
-              <TouchableWithoutFeedback onPress={() => setCurrentView("Item")}>
-                <Image
-                  source={marker.image}
-                  style={styles.cardImage}
-                  resizeMode="cover"
-                />
-              </TouchableWithoutFeedback>
-              <View style={styles.textContent}>
-                <Text numberOfLines={1} style={styles.cardtitle}>
-                  {marker.title}
-                </Text>
-                <Text numberOfLines={1} style={styles.cardDescription}>
-                  {marker.description}
-                </Text>
-              </View>
+      <View style={styles.results}>
+        <View style={styles.viewButtonsContainer}>
+          <TouchableWithoutFeedback>
+            <View style={styles.floraView}>
+              <Text>FLORA</Text>
             </View>
-          );
-        })}
-      </Animated.ScrollView>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>
+            <View style={styles.capturePhoto}>
+              <Text>PICTURE</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback>
+            <View style={styles.faunaView}>
+              <Text>FAUNA</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
+        <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
+          <Text style={styles.title}>Flora Nearby</Text>
+        </TouchableWithoutFeedback>
+        <Animated.ScrollView
+          horizontal
+          scrollEventThrottle={1}
+          showsHorizontalScrollIndicator={false}
+          snapToInterval={CARD_WIDTH}
+          style={styles.scrollView}
+        >
+          {markers.map((marker, index) => {
+            return (
+              <View style={styles.card} key={index}>
+                <TouchableWithoutFeedback
+                  onPress={() => setCurrentView("Item")}
+                >
+                  <Image
+                    source={marker.image}
+                    style={styles.cardImage}
+                    resizeMode="cover"
+                  />
+                </TouchableWithoutFeedback>
+                <View style={styles.textContent}>
+                  <Text numberOfLines={1} style={styles.cardtitle}>
+                    {marker.title}
+                  </Text>
+                  <Text numberOfLines={1} style={styles.cardDescription}>
+                    {marker.description}
+                  </Text>
+                </View>
+              </View>
+            );
+          })}
+        </Animated.ScrollView>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.88,
+    flex: 1,
+  },
+  map: {
+    flex: 8,
+  },
+  results: {
+    flex: 4,
+  },
+  viewButtonsContainer: {
+    flex: 2,
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
+  floraView: {
+    flex: 1,
+    borderWidth: 1,
+  },
+  faunaView: {
+    flex: 1,
+    borderWidth: 1,
+  },
+  capturePhoto: {
+    flex: 1,
+    borderWidth: 1,
   },
   title: {
-    top: 5,
-    left: 10,
-    fontSize: 25,
-  },
-  scrollView: {
-    position: "absolute",
-    bottom: -90,
-    paddingVertical: 10,
-  },
-  endPadding: {
-    paddingRight: width - CARD_WIDTH,
+    flex: 1,
+    fontSize: 30,
+    fontWeight: "bold",
+    paddingLeft: "2%",
   },
   card: {
-    padding: 10,
-    elevation: 2,
+    padding: "1%",
     backgroundColor: "#FFF",
-    marginHorizontal: 10,
-    shadowColor: "#000",
-    shadowRadius: 5,
-    shadowOpacity: 0.3,
-    shadowOffset: { x: 2, y: -2 },
+    marginHorizontal: 5,
     height: CARD_HEIGHT,
     width: CARD_WIDTH,
     overflow: "hidden",
     borderWidth: 1,
   },
   cardImage: {
-    flex: 3,
+    flex: 2.5,
     width: "100%",
     height: "100%",
     alignSelf: "center",
@@ -175,12 +206,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardtitle: {
-    fontSize: 16,
+    fontSize: 20,
     marginTop: 5,
     fontWeight: "bold",
   },
   cardDescription: {
-    fontSize: 10,
+    fontSize: 16,
     color: "#444",
   },
   marker: {
