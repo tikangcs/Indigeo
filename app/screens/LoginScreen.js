@@ -34,7 +34,7 @@ export default function LoginScreen({ setCurrentView }) {
         />
         <TouchableOpacity
           style={styles.loginButton}
-          onPress={() => setCurrentView("Home")}
+          onPress={() => setCurrentView("Profile")}
         >
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
