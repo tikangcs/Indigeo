@@ -6,6 +6,7 @@ import {
   ScrollableView,
   Text,
   Image,
+  Button,
 } from "react-native";
 
 export default function ProfileScreen({ setCurrentView }) {
@@ -23,6 +24,7 @@ export default function ProfileScreen({ setCurrentView }) {
       <View style={styles.areaFour}>
         <Text>SHARE BUTTONS</Text>
       </View>
+      <Button title={"Back Home"} onPress={() => setCurrentView("Home")} />
     </SafeAreaView>
   );
 }

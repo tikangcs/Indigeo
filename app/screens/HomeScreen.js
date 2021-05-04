@@ -17,15 +17,14 @@ export default function HomeScreen({ setCurrentView }) {
       source={require("../assets/Home5.jpg")}
     >
       <Image style={styles.logo} source={require("../assets/Logo.png")} />
-
       <View style={styles.buttonContainer}>
         <TouchableWithoutFeedback onPress={() => setCurrentView("Login")}>
-          <View style={styles.loginButton}>
+          <View style={styles.buttons}>
             <Text style={styles.buttonText}>LOGIN</Text>
           </View>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
-          <View style={styles.guestButton}>
+          <View style={styles.buttons}>
             <Text style={styles.buttonText}>GUEST</Text>
           </View>
         </TouchableWithoutFeedback>
@@ -41,36 +40,27 @@ const styles = StyleSheet.create({
   },
   logo: {
     flex: 2,
-    position: "absolute",
-    top: 40,
     alignSelf: "center",
-    height: 300,
-    width: 300,
+    height: "40%",
+    width: "80%",
     resizeMode: "stretch",
   },
   buttonContainer: {
+    flex: 2,
     flexDirection: "row",
+    alignItems: "flex-end",
   },
   buttonText: {
+    alignSelf: "center",
     color: "rgb(92,50,3)",
     fontSize: 30,
-    flexDirection: "column",
-    alignSelf: "center",
-    left: 60,
+    fontWeight: "bold",
   },
-  loginButton: {
+  buttons: {
     width: "50%",
-    height: 70,
+    height: "17%",
     backgroundColor: "rgba(166, 204, 241, 0.7)",
-    flexDirection: "row",
+    justifyContent: "center",
     borderWidth: 1,
-  },
-  guestButton: {
-    width: "50%",
-    height: 70,
-    backgroundColor: "rgba(166, 204, 241, 0.7)",
-    flexDirection: "row",
-    borderWidth: 1,
-    color: "rgba(3, 54, 1, 1)",
   },
 });
