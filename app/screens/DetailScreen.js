@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
   exit: {
     flex: 1,
     flexDirection: "row",
+    marginRight: "5%",
     justifyContent: "flex-end",
   },
   title: {
