@@ -3,7 +3,7 @@ import HomeScreen from "./app/screens/HomeScreen.js";
 import LoginScreen from "./app/screens/LoginScreen.js";
 import ProfileScreen from "./app/screens/ProfileScreen.js";
 import MapScreen from "./app/screens/MapScreen.js";
-import ViewItemScreen from "./app/screens/ViewItemScreen.js";
+import DetailScreen from "./app/screens/DetailScreen.js";
 
 export default function App() {
   const [currentView, setCurrentView] = useState("Home");
@@ -12,7 +12,7 @@ export default function App() {
   ) : currentView === "Map" ? (
     <MapScreen setCurrentView={setCurrentView} />
   ) : currentView === "Item" ? (
-    <ViewItemScreen setCurrentView={setCurrentView} />
+    <DetailScreen setCurrentView={setCurrentView} />
   ) : currentView === "Profile" ? (
     <ProfileScreen setCurrentView={setCurrentView} />
   ) : (

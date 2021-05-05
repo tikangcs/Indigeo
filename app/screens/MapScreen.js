@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   results: {
     flex: 4,
-    backgroundColor: "rgba(28, 76, 25, 0.3)",
+    backgroundColor: "rgba(128, 128, 128, 0.3)",
   },
   viewButtonsContainer: {
     flex: 2,
