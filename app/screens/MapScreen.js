@@ -81,6 +81,8 @@ const CARD_HEIGHT = height / 5.5;
 const CARD_WIDTH = CARD_HEIGHT - 10;
 
 export default function MapScreen({ setCurrentView }) {
+  let { display, setDisplay } = useState("Flora");
+
   return (
     <View style={styles.container}>
       <MapView
@@ -99,21 +101,22 @@ export default function MapScreen({ setCurrentView }) {
       </MapView>
       <View style={styles.results}>
         <View style={styles.viewButtonsContainer}>
-          <TouchableWithoutFeedback>
-            <View style={styles.floraView}>
-              <Text>FLORA</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.capturePhoto}>
-              <Text>PICTURE</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.faunaView}>
-              <Text>FAUNA</Text>
-            </View>
-          </TouchableWithoutFeedback>
+          <View style={styles.viewButtons}>
+            <TouchableWithoutFeedback onPress={() => setDisplay("Flora")}>
+              <Text style={styles.buttonText}>FLORA</Text>
+            </TouchableWithoutFeedback>
+          </View>
+          <View style={styles.capturePhoto}>
+            <Image
+              style={styles.capturePhoto}
+              source={require("../assets/camera.png")}
+            />
+          </View>
+          <View style={styles.viewButtons}>
+            <TouchableWithoutFeedback onPress={() => setDisplay("Fauna")}>
+              <Text style={styles.buttonText}>FAUNA</Text>
+            </TouchableWithoutFeedback>
+          </View>
         </View>
         <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
           <Text style={styles.title}>Flora Nearby</Text>
@@ -163,28 +166,37 @@ const styles = StyleSheet.create({
   },
   results: {
     flex: 4,
+    backgroundColor: "rgba(28, 76, 25, 0.3)",
   },
   viewButtonsContainer: {
     flex: 2,
+    marginTop: "2%",
     flexDirection: "row",
     justifyContent: "space-around",
   },
-  floraView: {
-    flex: 1,
+  viewButtons: {
+    flex: 2,
     borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    margin: "2%",
+    backgroundColor: "rgba(166, 204, 241, 0.7)",
   },
-  faunaView: {
-    flex: 1,
-    borderWidth: 1,
+  buttonText: {
+    fontSize: 30,
   },
   capturePhoto: {
-    flex: 1,
+    flex: 1.4,
+    resizeMode: "contain",
+    borderRadius: 50,
     borderWidth: 1,
+    backgroundColor: "rgba(128,128,128,0.5)",
   },
   title: {
     flex: 1,
     fontSize: 30,
     fontWeight: "bold",
+    paddingVertical: "2%",
     paddingLeft: "2%",
   },
   card: {
@@ -195,6 +207,7 @@ const styles = StyleSheet.create({
     width: CARD_WIDTH,
     overflow: "hidden",
     borderWidth: 1,
+    backgroundColor: "rgba(213, 38, 85, 0.25)",
   },
   cardImage: {
     flex: 2.5,
