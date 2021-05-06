@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -14,20 +14,48 @@ import {
 import MapView from "react-native-maps";
 import markers from "../utils/markers";
 import region from "../utils/region";
+import * as Location from "expo-location";
+import * as Permissions from "expo-permissions";
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
 const CARD_WIDTH = CARD_HEIGHT - 10;
 
 export default function MapScreen({ setCurrentView }) {
-  let { display, setDisplay } = useState("Flora");
-  let { geoLocation, setGeoLocation } = useState(region);
+  const [display, setDisplay] = useState("Flora");
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let userLocation = await Location.getCurrentPositionAsync({});
+      setLocation(userLocation);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
 
   return (
     <View style={styles.container}>
       <MapView
         showsUserLocation={true}
-        region={region}
+        region={{
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
         style={styles.map}
         provider={"google"}
         mapType={"mutedStandard"}
@@ -41,6 +69,9 @@ export default function MapScreen({ setCurrentView }) {
           );
         })}
       </MapView>
+      {/* <View>
+        <Text>{text}</Text>
+      </View> */}
       <View style={styles.results}>
         <View style={styles.viewButtonsContainer}>
           <View style={styles.viewButtons}>

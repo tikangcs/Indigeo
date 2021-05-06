@@ -1,8 +1,8 @@
 module.exports = [
   {
     coordinate: {
-      latitude: 40.86165217089088,
-      longitude: -73.55545459126333,
+      latitude: 40.78761,
+      longitude: -73.811391,
     },
     title: "Chrysanthemum",
     description: "Chrysanthemum morifolium",
@@ -10,8 +10,8 @@ module.exports = [
   },
   {
     coordinate: {
-      latitude: 40.86083561459188,
-      longitude: -73.5557885302147,
+      latitude: 40.792612,
+      longitude: -73.8093913,
     },
     title: "Daisies",
     description: "Bellis perennis",
@@ -19,8 +19,8 @@ module.exports = [
   },
   {
     coordinate: {
-      latitude: 40.86269909829106,
-      longitude: -73.5546788369571,
+      latitude: 40.791655618,
+      longitude: -73.80914,
     },
     title: "Sunflower",
     description: "Helianthus",
@@ -28,8 +28,8 @@ module.exports = [
   },
   {
     coordinate: {
-      latitude: 40.86188395758858,
-      longitude: -73.55690319073219,
+      latitude: 40.7961118,
+      longitude: -73.81539112,
     },
     title: "Hydrangea",
     description: "Hydrangea macrophylla",
@@ -37,8 +37,8 @@ module.exports = [
   },
   {
     coordinate: {
-      latitude: 40.860803307846666,
-      longitude: -73.55428374719885,
+      latitude: 40.791619,
+      longitude: -73.816172,
     },
     title: "Lavender",
     description: "Lavandula",
