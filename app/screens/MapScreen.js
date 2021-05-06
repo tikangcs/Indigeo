@@ -12,69 +12,8 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import MapView from "react-native-maps";
-
-const Images = [
-  require("../assets/Chrysanthemum.jpg"),
-  require("../assets/Daisies.jpg"),
-  require("../assets/Sunflower.jpg"),
-  require("../assets/Hydrangea.jpg"),
-  require("../assets/Lavender.jpg"),
-];
-
-const region = {
-  latitude: 40.862611934273396,
-  longitude: -73.55573613742635,
-  latitudeDelta: 0.01864195044303443,
-  longitudeDelta: 0.010142817690068,
-};
-
-const markers = [
-  {
-    coordinate: {
-      latitude: 40.86165217089088,
-      longitude: -73.55545459126333,
-    },
-    title: "Chrysanthemum",
-    description: "Chrysanthemum morifolium",
-    image: Images[0],
-  },
-  {
-    coordinate: {
-      latitude: 40.86083561459188,
-      longitude: -73.5557885302147,
-    },
-    title: "Daisies",
-    description: "Bellis perennis",
-    image: Images[1],
-  },
-  {
-    coordinate: {
-      latitude: 40.86269909829106,
-      longitude: -73.5546788369571,
-    },
-    title: "Sunflower",
-    description: "Helianthus",
-    image: Images[2],
-  },
-  {
-    coordinate: {
-      latitude: 40.86188395758858,
-      longitude: -73.55690319073219,
-    },
-    title: "Hydrangea",
-    description: "Hydrangea macrophylla",
-    image: Images[3],
-  },
-  {
-    coordinate: {
-      latitude: 40.860803307846666,
-      longitude: -73.55428374719885,
-    },
-    title: "Lavender",
-    description: "Lavandula",
-    image: Images[4],
-  },
-];
+import markers from "../utils/markers";
+import region from "../utils/region";
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
@@ -82,14 +21,17 @@ const CARD_WIDTH = CARD_HEIGHT - 10;
 
 export default function MapScreen({ setCurrentView }) {
   let { display, setDisplay } = useState("Flora");
+  let { geoLocation, setGeoLocation } = useState(region);
 
   return (
     <View style={styles.container}>
       <MapView
         showsUserLocation={true}
-        initialRegion={region}
+        region={region}
         style={styles.map}
         provider={"google"}
+        mapType={"mutedStandard"}
+        showsMyLocationButton={true}
       >
         {markers.map((marker, index) => {
           return (
