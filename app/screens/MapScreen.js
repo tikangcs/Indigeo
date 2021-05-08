@@ -5,6 +5,7 @@ import {
   Text,
   View,
   SafeAreaView,
+  FlatList,
   ScrollView,
   Animated,
   Image,
