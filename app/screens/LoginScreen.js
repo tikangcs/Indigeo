@@ -40,7 +40,7 @@ export default function LoginScreen({ setCurrentView }) {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.otherButtons}>
-          <Text style={styles.forgot_button}>Remeber Me</Text>
+          <Text style={styles.forgot_button}>Remember Me</Text>
           <Text style={styles.forgot_button}>Forgot Password</Text>
         </TouchableOpacity>
       </View>

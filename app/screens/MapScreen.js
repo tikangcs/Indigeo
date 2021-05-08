@@ -51,8 +51,8 @@ export default function MapScreen({ setCurrentView }) {
       <MapView
         showsUserLocation={true}
         region={{
-          latitude: location.coords.latitude,
-          longitude: location.coords.longitude,
+          latitude: region.latitude,
+          longitude: region.longitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
@@ -69,9 +69,9 @@ export default function MapScreen({ setCurrentView }) {
           );
         })}
       </MapView>
-      {/* <View>
+      <View>
         <Text>{text}</Text>
-      </View> */}
+      </View>
       <View style={styles.results}>
         <View style={styles.viewButtonsContainer}>
           <View style={styles.viewButtons}>
