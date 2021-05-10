@@ -1,6 +1,6 @@
 module.exports = [
   {
-    coordinate: {
+    coordinates: {
       latitude: 40.78761,
       longitude: -73.811391,
     },
@@ -9,7 +9,7 @@ module.exports = [
     image: require("../assets/Chrysanthemum.jpg"),
   },
   {
-    coordinate: {
+    coordinates: {
       latitude: 40.792612,
       longitude: -73.8093913,
     },
@@ -18,7 +18,7 @@ module.exports = [
     image: require("../assets/Daisies.jpg"),
   },
   {
-    coordinate: {
+    coordinates: {
       latitude: 40.791655618,
       longitude: -73.80914,
     },
@@ -27,7 +27,7 @@ module.exports = [
     image: require("../assets/Sunflower.jpg"),
   },
   {
-    coordinate: {
+    coordinates: {
       latitude: 40.7961118,
       longitude: -73.81539112,
     },
@@ -36,7 +36,7 @@ module.exports = [
     image: require("../assets/Hydrangea.jpg"),
   },
   {
-    coordinate: {
+    coordinates: {
       latitude: 40.791619,
       longitude: -73.816172,
     },

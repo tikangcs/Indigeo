@@ -23,14 +23,20 @@ export default function LoginScreen({ setCurrentView }) {
           style={styles.loginInputs}
           placeholder={"Username"}
           placeholderTextColor={"rgba(0,128,0,0.8)"}
-          onChange={(username) => setUsername(username)}
+          value={username}
+          maxLength={15}
+          onChange={(text) => setUsername(text)}
+          autoCapitalize={"none"}
         />
         <TextInput
           style={styles.loginInputs}
           placeholder={"Password"}
           placeholderTextColor={"rgba(0,128,0,0.8)"}
           secureTextEntry={true}
-          onChange={(password) => setPassword(password)}
+          value={password}
+          maxLength={15}
+          onChange={(text) => setPassword(text)}
+          autoCapitalize={"none"}
         />
         <TouchableOpacity
           style={styles.loginButton}
