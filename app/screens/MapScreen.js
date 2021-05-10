@@ -39,7 +39,7 @@ export default function MapScreen({ setCurrentView, location }) {
       >
         {markers.map((marker, index) => {
           return (
-            <MapView.Marker key={index} coordinates={marker.coordinates}>
+            <MapView.Marker key={index} coordinate={marker.coordinates}>
               <View style={styles.marker} />
             </MapView.Marker>
           );
