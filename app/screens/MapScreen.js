@@ -13,13 +13,17 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import MapView from "react-native-maps";
-import markers from "../utils/markers";
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
 const CARD_WIDTH = CARD_HEIGHT - 10;
 
-export default function MapScreen({ setCurrentView, location }) {
+export default function MapScreen({
+  setCurrentView,
+  setCurrentItem,
+  location,
+  markers,
+}) {
   const [display, setDisplay] = useState("Flora");
 
   return (
@@ -76,12 +80,15 @@ export default function MapScreen({ setCurrentView, location }) {
         >
           {markers.map((marker, index) => {
             return (
-              <View style={styles.card} key={index}>
+              <View style={styles.card} key={marker.id}>
                 <TouchableWithoutFeedback
-                  onPress={() => setCurrentView("Item")}
+                  onPress={() => {
+                    setCurrentItem(index);
+                    setCurrentView("Item");
+                  }}
                 >
                   <Image
-                    source={marker.image}
+                    source={require("../assets/Daisies.jpg")}
                     style={styles.cardImage}
                     resizeMode="cover"
                   />

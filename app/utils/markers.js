@@ -7,6 +7,10 @@ module.exports = [
     title: "Chrysanthemum",
     description: "Chrysanthemum morifolium",
     image: require("../assets/Chrysanthemum.jpg"),
+    seasonality: "Off-season",
+    status: "Endangered",
+    safety: "Dangerous",
+    category: "Flora",
   },
   {
     coordinates: {
@@ -16,6 +20,10 @@ module.exports = [
     title: "Daisies",
     description: "Bellis perennis",
     image: require("../assets/Daisies.jpg"),
+    seasonality: "Off-season",
+    status: "Endangered",
+    safety: "Dangerous",
+    category: "Flora",
   },
   {
     coordinates: {
@@ -25,6 +33,10 @@ module.exports = [
     title: "Sunflower",
     description: "Helianthus",
     image: require("../assets/Sunflower.jpg"),
+    seasonality: "Off-season",
+    status: "Endangered",
+    safety: "Dangerous",
+    category: "Flora",
   },
   {
     coordinates: {
@@ -34,6 +46,10 @@ module.exports = [
     title: "Hydrangea",
     description: "Hydrangea macrophylla",
     image: require("../assets/Hydrangea.jpg"),
+    seasonality: "Off-season",
+    status: "Endangered",
+    safety: "Dangerous",
+    category: "Flora",
   },
   {
     coordinates: {
@@ -43,5 +59,9 @@ module.exports = [
     title: "Lavender",
     description: "Lavandula",
     image: require("../assets/Lavender.jpg"),
+    seasonality: "Off-season",
+    status: "Endangered",
+    safety: "Dangerous",
+    category: "Flora",
   },
 ];

@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-export default function DetailScreen({ setCurrentView }) {
+export default function DetailScreen({ setCurrentView, currentItem }) {
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -27,7 +27,7 @@ export default function DetailScreen({ setCurrentView }) {
             />
           </View>
           <View style={styles.title}>
-            <Text style={styles.titleText}>Sunflower</Text>
+            <Text style={styles.titleText}>{currentItem.title}</Text>
           </View>
         </View>
         <View style={styles.tagContainer}>
@@ -37,7 +37,10 @@ export default function DetailScreen({ setCurrentView }) {
                 <Text style={styles.tagHeaderText}> Seasonality </Text>
               </View>
               <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}> In-season </Text>
+                <Text style={styles.tagBodyText}>
+                  {" "}
+                  {currentItem.seasonality}{" "}
+                </Text>
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -47,7 +50,7 @@ export default function DetailScreen({ setCurrentView }) {
                 <Text style={styles.tagHeaderText}> Status </Text>
               </View>
               <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}> Endangered </Text>
+                <Text style={styles.tagBodyText}> {currentItem.status} </Text>
               </View>
             </View>
           </TouchableWithoutFeedback>
@@ -57,29 +60,17 @@ export default function DetailScreen({ setCurrentView }) {
                 <Text style={styles.tagHeaderText}> Safety Rating </Text>
               </View>
               <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}> Non-dangerous </Text>
+                <Text style={styles.tagBodyText}> {currentItem.safety} </Text>
               </View>
             </View>
           </TouchableWithoutFeedback>
         </View>
         <View style={styles.detailContainer}>
           <Text style={styles.detailsCategories}>Scientific Name</Text>
-          <Text style={styles.details}>Helianthus</Text>
+          <Text style={styles.details}>{currentItem.description}</Text>
           <Text style={styles.detailsCategories}>Fun Fact</Text>
           <ScrollView>
-            <Text style={styles.details}>
-              ivamus eu mollis enim, ac tempor diam. Vivamus sit amet est a leo
-              ullamcorper tempus sed vitae purus. In egestas risus eu leo
-              feugiat faucibus. Donec aliquam porta enim vitae hendrerit. Duis
-              eros ante, bibendum ac venenatis a, vulputate sit amet nibh. Sed
-              hendrerit convallis urna, pulvinar tempor nulla egestas et. Sed
-              sed tincidunt elit, quis vehicula elit. Sed tincidunt metus quis
-              tempus commodo. Phasellus sed molestie diam. Cras luctus massa
-              vitae ultricies pretium. Aenean vestibulum sodales eros eget
-              interdum. Ut feugiat leo sed felis iaculis, ac feugiat est
-              eleifend. Mauris commodo neque molestie elit faucibus iaculis.
-              Orci varius natoque.
-            </Text>
+            <Text style={styles.details}>{currentItem.funFacts}</Text>
           </ScrollView>
         </View>
         <View style={styles.favoriteContainer}>
