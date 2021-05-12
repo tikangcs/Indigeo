@@ -7,58 +7,91 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Button,
 } from "react-native";
+import { useForm, Controller } from "react-hook-form";
+import { auth } from "../utils/firebase.js";
 
 export default function LoginScreen({ setCurrentView }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { control, handleSubmit } = useForm();
+  const [signedIn, setSignedIn] = useState(false);
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((err) => console.log(err))
+      .then(signedIn ? setCurrentView("Profile") : setCurrentView("Login"));
+  };
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      setSignedIn(true);
+    } else {
+      setSignedIn(false);
+    }
+  });
 
   return (
     <ImageBackground
-      style={styles.background}
+      style={styles.loginContainer}
       source={require("../assets/login.jpg")}
     >
-      <View style={styles.loginContainer}>
-        <TextInput
-          style={styles.loginInputs}
-          placeholder={"Username"}
-          placeholderTextColor={"rgba(0,128,0,0.8)"}
-          value={username}
-          maxLength={15}
-          onChange={(text) => setUsername(text)}
-          autoCapitalize={"none"}
-        />
-        <TextInput
-          style={styles.loginInputs}
-          placeholder={"Password"}
-          placeholderTextColor={"rgba(0,128,0,0.8)"}
-          secureTextEntry={true}
-          value={password}
-          maxLength={15}
-          onChange={(text) => setPassword(text)}
-          autoCapitalize={"none"}
-        />
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => setCurrentView("Profile")}
-        >
-          <Text style={styles.loginText}>LOGIN</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.otherButtons}>
-          <Text style={styles.forgot_button}>Remember Me</Text>
-          <Text style={styles.forgot_button}>Forgot Password</Text>
-        </TouchableOpacity>
-      </View>
+      <Controller
+        control={control}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={styles.loginInputs}
+            label="Email"
+            placeholder="Email"
+            placeholderTextColor={"rgba(0,128,0,0.8)"}
+            autoCapitalize={"none"}
+            maxLength={30}
+            onChangeText={(value) => {
+              onChange(value);
+              // console.log(value);
+            }}
+            value={value}
+          />
+        )}
+        name="email"
+        rules={{ required: true }}
+        defaultValue=""
+      />
+      <Controller
+        control={control}
+        render={({ field: { onChange, value } }) => (
+          <TextInput
+            style={styles.loginInputs}
+            label="Password"
+            placeholder="Password"
+            placeholderTextColor={"rgba(0,128,0,0.8)"}
+            autoCapitalize={"none"}
+            maxLength={15}
+            secureTextEntry
+            onChangeText={(value) => {
+              onChange(value);
+              // console.log(value);
+            }}
+            value={value}
+          />
+        )}
+        name="password"
+        rules={{ required: true }}
+        defaultValue=""
+      />
+      <TouchableOpacity
+        style={styles.loginButton}
+        title="login"
+        onPress={handleSubmit(onSubmit)}
+      >
+        <Text style={styles.loginText}>LOGIN</Text>
+      </TouchableOpacity>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-  },
-  logo: {},
   loginContainer: {
     flex: 1,
     alignItems: "center",
@@ -81,13 +114,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "rgba(166, 204, 241, 0.8)",
     borderWidth: 1,
-  },
-  otherButtons: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  forgot_button: {
-    height: 30,
-    backgroundColor: "rgba(255,255,255,0.8)",
   },
 });

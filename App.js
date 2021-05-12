@@ -6,14 +6,14 @@ import LoginScreen from "./app/screens/LoginScreen.js";
 import ProfileScreen from "./app/screens/ProfileScreen.js";
 import MapScreen from "./app/screens/MapScreen.js";
 import DetailScreen from "./app/screens/DetailScreen.js";
-import { db } from "./app/utils/firebase.js";
+import { db, auth } from "./app/utils/firebase.js";
 
 export default function App() {
   const [currentView, setCurrentView] = useState("Home");
   const [currentItem, setCurrentItem] = useState(0);
   const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  // const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
     //query from the firebase db
@@ -41,15 +41,16 @@ export default function App() {
     })();
   }, []);
 
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
+  // auth.onAuthStateChanged((user) => {
+  //   if (user) {
+  //     setSignedIn(true);
+  //   } else {
+  //     setSignedIn(false);
+  //   }
+  // });
 
-  return currentView === "Login" ? (
-    <LoginScreen setCurrentView={setCurrentView} />
+  return currentView === "Home" ? (
+    <HomeScreen setCurrentView={setCurrentView} />
   ) : currentView === "Map" ? (
     <MapScreen
       setCurrentView={setCurrentView}
@@ -65,6 +66,6 @@ export default function App() {
   ) : currentView === "Profile" ? (
     <ProfileScreen setCurrentView={setCurrentView} />
   ) : (
-    <HomeScreen setCurrentView={setCurrentView} />
+    <LoginScreen setCurrentView={setCurrentView} />
   );
 }
