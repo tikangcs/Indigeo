@@ -12,9 +12,8 @@ import {
 import { useForm, Controller } from "react-hook-form";
 import { auth } from "../utils/firebase.js";
 
-export default function LoginScreen({ setCurrentView }) {
+export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
   const { control, handleSubmit } = useForm();
-  const [signedIn, setSignedIn] = useState(false);
 
   const onSubmit = (data) => {
     const { email, password } = data;
@@ -49,7 +48,6 @@ export default function LoginScreen({ setCurrentView }) {
             maxLength={30}
             onChangeText={(value) => {
               onChange(value);
-              // console.log(value);
             }}
             value={value}
           />
@@ -71,7 +69,6 @@ export default function LoginScreen({ setCurrentView }) {
             secureTextEntry
             onChangeText={(value) => {
               onChange(value);
-              // console.log(value);
             }}
             value={value}
           />
@@ -87,6 +84,10 @@ export default function LoginScreen({ setCurrentView }) {
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
+      <Button
+        title="Continue as Guest"
+        onPress={() => setCurrentView("Map")}
+      ></Button>
     </ImageBackground>
   );
 }

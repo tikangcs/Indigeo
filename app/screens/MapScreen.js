@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  AppRegistry,
   StyleSheet,
+  ScrollView,
   Text,
   View,
-  SafeAreaView,
-  FlatList,
-  ScrollView,
   Animated,
   Image,
   Dimensions,
@@ -23,6 +20,7 @@ export default function MapScreen({
   setCurrentItem,
   location,
   markers,
+  signedIn,
 }) {
   const [display, setDisplay] = useState("Flora");
 
@@ -41,6 +39,19 @@ export default function MapScreen({
         mapType={"mutedStandard"}
         showsMyLocationButton={true}
       >
+        <View style={styles.placeholder}></View>
+        <View style={styles.headerButtons}>
+          <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
+            <Image source={require("../assets/back.png")} />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() =>
+              signedIn ? setCurrentView("Profile") : setCurrentView("Login")
+            }
+          >
+            <Image source={require("../assets/profile.png")} />
+          </TouchableWithoutFeedback>
+        </View>
         {markers.map((marker, index) => {
           return (
             <MapView.Marker key={index} coordinate={marker.coordinates}>
@@ -68,8 +79,8 @@ export default function MapScreen({
             </TouchableWithoutFeedback>
           </View>
         </View>
-        <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
-          <Text style={styles.title}>Flora Nearby</Text>
+        <TouchableWithoutFeedback>
+          <Text style={styles.title}>Users Reporting Nearby</Text>
         </TouchableWithoutFeedback>
         <Animated.ScrollView
           horizontal
@@ -117,6 +128,15 @@ const styles = StyleSheet.create({
   map: {
     flex: 8,
   },
+  placeholder: {
+    flex: 1,
+  },
+  headerButtons: {
+    flex: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: "6%",
+  },
   results: {
     flex: 4,
     backgroundColor: "rgba(128, 128, 128, 0.3)",
@@ -160,7 +180,7 @@ const styles = StyleSheet.create({
     width: CARD_WIDTH,
     overflow: "hidden",
     borderWidth: 1,
-    backgroundColor: "rgba(213, 38, 85, 0.25)",
+    backgroundColor: "peachpuff",
   },
   cardImage: {
     flex: 2.5,

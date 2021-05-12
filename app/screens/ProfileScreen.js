@@ -53,9 +53,9 @@ export default function ProfileScreen({ setCurrentView }) {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
+      <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
         <View style={styles.logout}>
-          <Text style={styles.logoutText}>Logout</Text>
+          <Text style={styles.logoutText}>Continue to Map</Text>
         </View>
       </TouchableWithoutFeedback>
     </SafeAreaView>

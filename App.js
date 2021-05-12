@@ -13,10 +13,10 @@ export default function App() {
   const [currentItem, setCurrentItem] = useState(0);
   const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
-  // const [signedIn, setSignedIn] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
 
   useEffect(() => {
-    //query from the firebase db
+    //query the markers from the firebase db
     const ref = db.collection("markers");
     ref.onSnapshot((query) => {
       const objs = [];
@@ -41,14 +41,6 @@ export default function App() {
     })();
   }, []);
 
-  // auth.onAuthStateChanged((user) => {
-  //   if (user) {
-  //     setSignedIn(true);
-  //   } else {
-  //     setSignedIn(false);
-  //   }
-  // });
-
   return currentView === "Home" ? (
     <HomeScreen setCurrentView={setCurrentView} />
   ) : currentView === "Map" ? (
@@ -57,6 +49,7 @@ export default function App() {
       setCurrentItem={setCurrentItem}
       location={location}
       markers={markers}
+      signedIn={signedIn}
     />
   ) : currentView === "Item" ? (
     <DetailScreen
@@ -66,6 +59,10 @@ export default function App() {
   ) : currentView === "Profile" ? (
     <ProfileScreen setCurrentView={setCurrentView} />
   ) : (
-    <LoginScreen setCurrentView={setCurrentView} />
+    <LoginScreen
+      setCurrentView={setCurrentView}
+      signedIn={signedIn}
+      setSignedIn={setSignedIn}
+    />
   );
 }
