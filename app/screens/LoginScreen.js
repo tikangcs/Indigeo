@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Button,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
@@ -36,6 +37,12 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
       style={styles.loginContainer}
       source={require("../assets/login.jpg")}
     >
+      <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
+        <Image
+          style={styles.backButton}
+          source={require("../assets/back.png")}
+        />
+      </TouchableWithoutFeedback>
       <Controller
         control={control}
         render={({ field: { onChange, value } }) => (
@@ -44,6 +51,7 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
             label="Email"
             placeholder="Email"
             placeholderTextColor={"rgba(0,128,0,0.8)"}
+            autoCorrect={false}
             autoCapitalize={"none"}
             maxLength={30}
             onChangeText={(value) => {
@@ -65,6 +73,7 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
             placeholder="Password"
             placeholderTextColor={"rgba(0,128,0,0.8)"}
             autoCapitalize={"none"}
+            autoCorrect={false}
             maxLength={15}
             secureTextEntry
             onChangeText={(value) => {
@@ -84,15 +93,16 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
       >
         <Text style={styles.loginText}>LOGIN</Text>
       </TouchableOpacity>
-      <Button
-        title="Continue as Guest"
-        onPress={() => setCurrentView("Map")}
-      ></Button>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  backButton: {
+    position: "absolute",
+    top: "6%",
+    left: "4%",
+  },
   loginContainer: {
     flex: 1,
     alignItems: "center",

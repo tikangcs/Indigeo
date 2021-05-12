@@ -65,7 +65,7 @@ export default function ProfileScreen({ setCurrentView }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "rgba(176,196,222,0.3)",
   },
   header: {
     flex: 1.2,
@@ -116,9 +116,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     padding: "1%",
+    backgroundColor: "peachpuff",
   },
   title: {
     fontSize: 20,
+    paddingTop: 3,
+    fontWeight: "bold",
   },
   image: {
     width: 110,

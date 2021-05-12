@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
+  SafeAreaView,
   StyleSheet,
   ScrollView,
   Text,
@@ -25,7 +26,7 @@ export default function MapScreen({
   const [display, setDisplay] = useState("Flora");
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <MapView
         showsUserLocation={true}
         region={{
@@ -39,7 +40,6 @@ export default function MapScreen({
         mapType={"mutedStandard"}
         showsMyLocationButton={true}
       >
-        <View style={styles.placeholder}></View>
         <View style={styles.headerButtons}>
           <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
             <Image source={require("../assets/back.png")} />
@@ -67,7 +67,7 @@ export default function MapScreen({
               <Text style={styles.buttonText}>FLORA</Text>
             </TouchableWithoutFeedback>
           </View>
-          <View style={styles.capturePhoto}>
+          <View style={styles.capturePhotoContainer}>
             <Image
               style={styles.capturePhoto}
               source={require("../assets/camera.png")}
@@ -79,15 +79,15 @@ export default function MapScreen({
             </TouchableWithoutFeedback>
           </View>
         </View>
-        <TouchableWithoutFeedback>
-          <Text style={styles.title}>Users Reporting Nearby</Text>
-        </TouchableWithoutFeedback>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>FOUND IN YOUR AREA</Text>
+        </View>
         <Animated.ScrollView
           horizontal
           scrollEventThrottle={1}
           showsHorizontalScrollIndicator={false}
           snapToInterval={CARD_WIDTH}
-          style={styles.scrollView}
+          contentContainerStyle={styles.scrollView}
         >
           {markers.map((marker, index) => {
             return (
@@ -117,33 +117,33 @@ export default function MapScreen({
           })}
         </Animated.ScrollView>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "rgba(176,196,222,0.4)",
   },
   map: {
     flex: 8,
   },
-  placeholder: {
-    flex: 1,
-  },
   headerButtons: {
-    flex: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginHorizontal: "6%",
+    marginHorizontal: "4%",
+    marginTop: "2%",
   },
   results: {
     flex: 4,
-    backgroundColor: "rgba(128, 128, 128, 0.3)",
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    backgroundColor: "rgba(139,69,19,0.5)",
   },
   viewButtonsContainer: {
     flex: 2,
-    marginTop: "2%",
+    marginTop: "3%",
     flexDirection: "row",
     justifyContent: "space-around",
   },
@@ -152,25 +152,39 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     alignItems: "center",
-    margin: "2%",
-    backgroundColor: "rgba(166, 204, 241, 0.7)",
+    marginHorizontal: "2%",
+    height: "100%",
+    backgroundColor: "rgba(234,102,113, 0.7)",
   },
   buttonText: {
     fontSize: 30,
   },
+  capturePhotoContainer: {
+    justifyContent: "center",
+  },
   capturePhoto: {
-    flex: 1.4,
+    flex: 1.45,
     resizeMode: "contain",
     borderRadius: 50,
-    borderWidth: 1,
-    backgroundColor: "rgba(128,128,128,0.5)",
+    borderWidth: 2,
+    backgroundColor: "rgba(128,128,128,0.7)",
+  },
+  titleContainer: {
+    flex: 2,
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   title: {
-    flex: 1,
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: "bold",
-    paddingVertical: "2%",
-    paddingLeft: "2%",
+    paddingLeft: "3%",
+    color: "honeydew",
+    textShadowColor: "black",
+    textShadowRadius: 2,
+    textShadowOffset: { width: 2, height: 2 },
+  },
+  scrollView: {
+    alignItems: "center",
   },
   card: {
     padding: "1%",
