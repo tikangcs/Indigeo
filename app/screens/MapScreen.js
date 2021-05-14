@@ -88,7 +88,11 @@ export default function MapScreen({
         </View>
         {markers.map((marker, index) => {
           return (
-            <MapView.Marker key={index} coordinate={marker.coordinates}>
+            <MapView.Marker
+              key={index}
+              title={"yes"}
+              coordinate={marker.coordinates}
+            >
               <View style={styles.marker} />
             </MapView.Marker>
           );
@@ -104,10 +108,10 @@ export default function MapScreen({
               <Text style={styles.buttonText}>FLORA</Text>
             </TouchableWithoutFeedback>
           </View>
-          <View style={styles.capturePhotoContainer}>
+          <View style={styles.uploadContainer}>
             <Image
-              style={styles.capturePhoto}
-              source={require("../assets/camera.png")}
+              style={styles.upload}
+              source={require("../assets/add.png")}
             />
           </View>
           <View style={styles.viewButtons}>
@@ -124,7 +128,7 @@ export default function MapScreen({
             snapToInterval={CARD_WIDTH}
             contentContainerStyle={styles.scrollView}
           >
-            {markers ? (
+            {markers.length ? (
               markers.map((marker, index) => {
                 return (
                   <View style={styles.card} key={marker.id}>
@@ -152,7 +156,9 @@ export default function MapScreen({
                 );
               })
             ) : (
-              <Text>SEARCHING</Text>
+              <View style={styles.searching}>
+                <Text style={styles.searchingText}>Searching...</Text>
+              </View>
             )}
           </Animated.ScrollView>
         </View>

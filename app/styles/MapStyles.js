@@ -1,6 +1,6 @@
 import { Dimensions } from "react-native";
 
-const { height } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
 const CARD_WIDTH = CARD_HEIGHT - 10;
 
@@ -55,15 +55,15 @@ module.exports = {
   buttonText: {
     fontSize: 30,
   },
-  capturePhotoContainer: {
+  uploadContainer: {
     justifyContent: "center",
   },
-  capturePhoto: {
+  upload: {
     flex: 1.45,
     resizeMode: "contain",
     borderRadius: 50,
     borderWidth: 2,
-    backgroundColor: "rgba(128,128,128,0.7)",
+    backgroundColor: "rgba(128,128,128, 0.7)",
   },
   scrollViewContainer: {
     flex: 9,
@@ -98,6 +98,18 @@ module.exports = {
   cardDescription: {
     fontSize: 16,
     color: "#444",
+  },
+  searching: {
+    flex: 1,
+    left: 10,
+    alignItems: "center",
+  },
+  searchingText: {
+    fontSize: 40,
+    color: "honeydew",
+    textShadowColor: "black",
+    textShadowRadius: 2,
+    textShadowOffset: { width: 2, height: 2 },
   },
   marker: {
     width: 13,
