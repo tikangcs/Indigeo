@@ -78,9 +78,6 @@ export default function MapScreen({
         showsMyLocationButton={true}
       >
         <View style={styles.headerButtons}>
-          <TouchableWithoutFeedback onPress={() => setCurrentView("Home")}>
-            <Image source={require("../assets/back.png")} />
-          </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
             onPress={() =>
               signedIn ? setCurrentView("Profile") : setCurrentView("Login")

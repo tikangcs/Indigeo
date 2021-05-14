@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import user from "../utils/profile";
 import ProfileStyles from "../styles/ProfileStyles";
+import { auth } from "../utils/firebase";
 
 const Item = ({ title, image, id }) => (
   <View style={styles.item}>
@@ -20,7 +21,7 @@ const Item = ({ title, image, id }) => (
   </View>
 );
 
-export default function ProfileScreen({ setCurrentView }) {
+export default function ProfileScreen({ setCurrentView, setSignedIn }) {
   const [profile, setProfile] = useState(undefined);
 
   const renderItem = ({ item }) => (
@@ -40,7 +41,7 @@ export default function ProfileScreen({ setCurrentView }) {
         </View>
       </View>
       <View style={styles.favoritesContainer}>
-        <Text style={styles.favoritesHeadingText}>Your Favorites</Text>
+        <Text style={styles.favoritesHeadingText}>Favorites</Text>
         <FlatList
           contentContainerStyle={styles.flatList}
           numColumns={3}
@@ -54,11 +55,24 @@ export default function ProfileScreen({ setCurrentView }) {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
-        <View style={styles.logout}>
-          <Text style={styles.logoutText}>Continue to Map</Text>
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={styles.buttonsContainer}>
+        <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
+          <View style={styles.continue}>
+            <Text style={styles.continueText}>Continue to Map</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+          onPress={() => {
+            auth.signOut();
+            setSignedIn(null);
+            setCurrentView("Home");
+          }}
+        >
+          <View style={styles.logout}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
     </SafeAreaView>
   );
 }

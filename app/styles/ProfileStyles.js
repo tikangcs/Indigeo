@@ -1,28 +1,27 @@
 module.exports = {
   container: {
     flex: 1,
-    backgroundColor: "rgba(176,196,222,0.3)",
+    backgroundColor: "rgba(176,196,222,0.4)",
   },
   header: {
-    flex: 1.2,
-    flexDirection: "row",
+    flex: 1.5,
+    marginTop: "5%",
     justifyContent: "center",
     alignItems: "center",
   },
   profilePhotoContainer: {
-    flex: 2,
+    flex: 5,
     alignItems: "center",
   },
   profilePhoto: {
-    height: "60%",
-    width: "60%",
-    borderWidth: 1,
-    borderRadius: 50,
-    resizeMode: "stretch",
+    flex: 5,
+    borderRadius: 100,
+    resizeMode: "contain",
   },
   usernameContainer: {
     flex: 3,
     height: "25%",
+    justifyContent: "center",
   },
   usernameText: {
     fontSize: 40,
@@ -34,9 +33,10 @@ module.exports = {
     margin: "2% 2%",
     alignItems: "center",
     padding: "0 3%",
+    backgroundColor: "tan",
   },
   favoritesHeadingText: {
-    fontSize: 30,
+    fontSize: 34,
     fontWeight: "bold",
   },
   flatList: {
@@ -63,14 +63,31 @@ module.exports = {
     width: 110,
     height: 110,
   },
-  logout: {
+  buttonsContainer: {
+    flex: 1,
+  },
+  continue: {
     flex: 0.5,
-    margin: "3%",
+    marginHorizontal: "2%",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "dodgerblue",
+    borderWidth: 1,
+  },
+  continueText: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  logout: {
+    flex: 0.5,
+    marginHorizontal: "2%",
+    marginVertical: "3%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "firebrick",
   },
   logoutText: {
     fontSize: 30,
+    color: "white",
   },
 };

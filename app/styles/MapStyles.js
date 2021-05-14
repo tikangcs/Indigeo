@@ -13,10 +13,9 @@ module.exports = {
     flex: 8,
   },
   headerButtons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: "4%",
-    marginTop: "2%",
+    alignItems: "flex-end",
+    marginRight: 10,
+    marginTop: 10,
   },
   results: {
     flex: 4,

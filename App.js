@@ -13,7 +13,7 @@ export default function App() {
   const [currentItem, setCurrentItem] = useState(0);
   const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
-  const [signedIn, setSignedIn] = useState(false);
+  const [signedIn, setSignedIn] = useState(auth.currentUser);
 
   useEffect(() => {
     (async () => {
@@ -52,7 +52,7 @@ export default function App() {
       currentItem={markers[currentItem]}
     />
   ) : currentView === "Profile" ? (
-    <ProfileScreen setCurrentView={setCurrentView} />
+    <ProfileScreen setCurrentView={setCurrentView} setSignedIn={setSignedIn} />
   ) : (
     <LoginScreen
       setCurrentView={setCurrentView}

@@ -22,17 +22,12 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
     const { email, password } = data;
     auth
       .signInWithEmailAndPassword(email, password)
-      .catch((err) => console.log(err))
-      .then(signedIn ? setCurrentView("Profile") : setCurrentView("Login"));
+      .then((profile) => {
+        setSignedIn(profile.user);
+        setCurrentView("Profile");
+      })
+      .catch((err) => console.log(err));
   };
-
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      setSignedIn(true);
-    } else {
-      setSignedIn(false);
-    }
-  });
 
   return (
     <ImageBackground
