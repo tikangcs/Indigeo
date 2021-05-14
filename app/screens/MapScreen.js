@@ -11,30 +11,66 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import MapView from "react-native-maps";
+import MapStyles from "../styles/MapStyles";
+import checkBoundaries from "../utils/boundaries";
+import { db, storage } from "../utils/firebase";
 
-const { width, height } = Dimensions.get("window");
+const styles = StyleSheet.create(MapStyles);
+const { height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 5.5;
 const CARD_WIDTH = CARD_HEIGHT - 10;
 
 export default function MapScreen({
   setCurrentView,
   setCurrentItem,
+  setLocation,
   location,
-  markers,
   signedIn,
 }) {
   const [display, setDisplay] = useState("Flora");
+  const [markers, setMarkers] = useState([]);
+  // const [imageUrl, setImageUrl] = useState(undefined);
+
+  // let imageRef = storage.ref().child(display + "/" + "Daisies.jpg");
+  // imageRef
+  //   .getDownloadURL()
+  //   .then((url) => {
+  //     setImageUrl(url);
+  //   })
+  //   .catch((err) => console.log("Firebase Storage retrieval error:", err));
+
+  db.collection("markers")
+    .where("type", "==", display)
+    .onSnapshot((query) => {
+      const objs = [];
+      query.forEach((doc) => {
+        let docLat = doc.data().coordinates.latitude;
+        let docLon = doc.data().coordinates.longitude;
+        let test = {
+          coords: {
+            latitude: 40.78761,
+            longitude: -73.811391,
+          },
+        };
+        if (checkBoundaries(docLat, docLon, test)) {
+          objs.push({ id: doc.id, ...doc.data() });
+        }
+      });
+      setMarkers(objs);
+    });
 
   return (
     <SafeAreaView style={styles.container}>
       <MapView
         showsUserLocation={true}
+        followsUserLocation={true}
         region={{
           latitude: location.coords.latitude,
           longitude: location.coords.longitude,
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
+        // onRegionChangeComplete={(region) => setLocation({ coords: region })}
         style={styles.map}
         provider={"google"}
         mapType={"mutedStandard"}
@@ -61,6 +97,9 @@ export default function MapScreen({
         })}
       </MapView>
       <View style={styles.results}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>FOUND IN YOUR AREA</Text>
+        </View>
         <View style={styles.viewButtonsContainer}>
           <View style={styles.viewButtons}>
             <TouchableWithoutFeedback onPress={() => setDisplay("Flora")}>
@@ -79,145 +118,49 @@ export default function MapScreen({
             </TouchableWithoutFeedback>
           </View>
         </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>FOUND IN YOUR AREA</Text>
-        </View>
-        <Animated.ScrollView
-          horizontal
-          scrollEventThrottle={1}
-          showsHorizontalScrollIndicator={false}
-          snapToInterval={CARD_WIDTH}
-          contentContainerStyle={styles.scrollView}
-        >
-          {markers.map((marker, index) => {
-            return (
-              <View style={styles.card} key={marker.id}>
-                <TouchableWithoutFeedback
-                  onPress={() => {
-                    setCurrentItem(index);
-                    setCurrentView("Item");
-                  }}
-                >
-                  <Image
-                    source={require("../assets/Daisies.jpg")}
-                    style={styles.cardImage}
-                    resizeMode="cover"
-                  />
-                </TouchableWithoutFeedback>
-                <View style={styles.textContent}>
-                  <Text numberOfLines={1} style={styles.cardtitle}>
-                    {marker.title}
-                  </Text>
-                  <Text numberOfLines={1} style={styles.cardDescription}>
-                    {marker.description}
-                  </Text>
-                </View>
+        <View style={styles.scrollViewContainer}>
+          <Animated.ScrollView
+            horizontal
+            scrollEventThrottle={1}
+            showsHorizontalScrollIndicator={false}
+            snapToInterval={CARD_WIDTH}
+            contentContainerStyle={styles.scrollView}
+          >
+            {markers ? (
+              markers.map((marker, index) => {
+                return (
+                  <View style={styles.card} key={marker.id}>
+                    <TouchableWithoutFeedback
+                      onPress={() => {
+                        setCurrentItem(index);
+                        setCurrentView("Item");
+                      }}
+                    >
+                      <Image
+                        source={require("../assets/CanadaGoose.jpg")}
+                        style={styles.cardImage}
+                        resizeMode="cover"
+                      />
+                    </TouchableWithoutFeedback>
+                    <View style={styles.textContent}>
+                      <Text numberOfLines={1} style={styles.cardtitle}>
+                        {marker.title}
+                      </Text>
+                      <Text numberOfLines={1} style={styles.cardDescription}>
+                        {marker.description}
+                      </Text>
+                    </View>
+                  </View>
+                );
+              })
+            ) : (
+              <View style={styles.card}>
+                <Text>SEARCHING</Text>
               </View>
-            );
-          })}
-        </Animated.ScrollView>
+            )}
+          </Animated.ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "rgba(176,196,222,0.4)",
-  },
-  map: {
-    flex: 8,
-  },
-  headerButtons: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginHorizontal: "4%",
-    marginTop: "2%",
-  },
-  results: {
-    flex: 4,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
-    backgroundColor: "rgba(139,69,19,0.5)",
-  },
-  viewButtonsContainer: {
-    flex: 2,
-    marginTop: "3%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
-  viewButtons: {
-    flex: 2,
-    borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginHorizontal: "2%",
-    height: "100%",
-    backgroundColor: "rgba(234,102,113, 0.7)",
-  },
-  buttonText: {
-    fontSize: 30,
-  },
-  capturePhotoContainer: {
-    justifyContent: "center",
-  },
-  capturePhoto: {
-    flex: 1.45,
-    resizeMode: "contain",
-    borderRadius: 50,
-    borderWidth: 2,
-    backgroundColor: "rgba(128,128,128,0.7)",
-  },
-  titleContainer: {
-    flex: 2,
-    justifyContent: "flex-end",
-    alignItems: "center",
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    paddingLeft: "3%",
-    color: "honeydew",
-    textShadowColor: "black",
-    textShadowRadius: 2,
-    textShadowOffset: { width: 2, height: 2 },
-  },
-  scrollView: {
-    alignItems: "center",
-  },
-  card: {
-    padding: "1%",
-    backgroundColor: "#FFF",
-    marginHorizontal: 5,
-    height: CARD_HEIGHT,
-    width: CARD_WIDTH,
-    overflow: "hidden",
-    borderWidth: 1,
-    backgroundColor: "peachpuff",
-  },
-  cardImage: {
-    flex: 2.5,
-    width: "100%",
-    height: "100%",
-    alignSelf: "center",
-  },
-  textContent: {
-    flex: 1,
-  },
-  cardtitle: {
-    fontSize: 20,
-    marginTop: 5,
-    fontWeight: "bold",
-  },
-  cardDescription: {
-    fontSize: 16,
-    color: "#444",
-  },
-  marker: {
-    width: 13,
-    height: 13,
-    borderRadius: 5,
-    backgroundColor: "red",
-  },
-});

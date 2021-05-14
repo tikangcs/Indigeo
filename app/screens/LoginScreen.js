@@ -8,10 +8,12 @@ import {
   View,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Button,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { auth } from "../utils/firebase.js";
+import LoginStyles from "../styles/LoginStyles";
+
+const styles = StyleSheet.create(LoginStyles);
 
 export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
   const { control, handleSubmit } = useForm();
@@ -96,34 +98,3 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  backButton: {
-    position: "absolute",
-    top: "6%",
-    left: "4%",
-  },
-  loginContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  loginInputs: {
-    fontSize: 16,
-    width: "70%",
-    height: 44,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "black",
-    marginBottom: 10,
-    backgroundColor: "rgba(255,255,255,0.8)",
-  },
-  loginButton: {
-    width: "70%",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(166, 204, 241, 0.8)",
-    borderWidth: 1,
-  },
-});
