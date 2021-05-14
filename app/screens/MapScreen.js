@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -25,10 +25,11 @@ export default function MapScreen({
   setCurrentItem,
   setLocation,
   location,
+  markers,
+  setMarkers,
   signedIn,
 }) {
   const [display, setDisplay] = useState("Flora");
-  const [markers, setMarkers] = useState([]);
   // const [imageUrl, setImageUrl] = useState(undefined);
 
   // let imageRef = storage.ref().child(display + "/" + "Daisies.jpg");
@@ -154,9 +155,7 @@ export default function MapScreen({
                 );
               })
             ) : (
-              <View style={styles.card}>
-                <Text>SEARCHING</Text>
-              </View>
+              <Text>SEARCHING</Text>
             )}
           </Animated.ScrollView>
         </View>

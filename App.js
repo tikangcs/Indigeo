@@ -11,6 +11,7 @@ import { db, auth } from "./app/utils/firebase.js";
 export default function App() {
   const [currentView, setCurrentView] = useState("Home");
   const [currentItem, setCurrentItem] = useState(0);
+  const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
 
@@ -33,7 +34,6 @@ export default function App() {
     })();
   }, []);
 
-  console.log(location);
   return currentView === "Home" ? (
     <HomeScreen setCurrentView={setCurrentView} />
   ) : currentView === "Map" ? (
@@ -43,6 +43,8 @@ export default function App() {
       setLocation={setLocation}
       location={location}
       signedIn={signedIn}
+      markers={markers}
+      setMarkers={setMarkers}
     />
   ) : currentView === "Item" ? (
     <DetailScreen
