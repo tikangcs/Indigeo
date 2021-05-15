@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -13,7 +13,8 @@ import {
 import MapView from "react-native-maps";
 import MapStyles from "../styles/MapStyles";
 import checkBoundaries from "../utils/boundaries";
-import { db, storage } from "../utils/firebase";
+import { db } from "../utils/firebase";
+import images from "../sample/images";
 
 const styles = StyleSheet.create(MapStyles);
 const { height } = Dimensions.get("window");
@@ -23,42 +24,29 @@ const CARD_WIDTH = CARD_HEIGHT - 10;
 export default function MapScreen({
   setCurrentView,
   setCurrentItem,
-  setLocation,
   location,
-  markers,
-  setMarkers,
   signedIn,
 }) {
   const [display, setDisplay] = useState("Flora");
-  // const [imageUrl, setImageUrl] = useState(undefined);
+  const [markers, setMarkers] = useState([]);
 
-  // let imageRef = storage.ref().child(display + "/" + "Daisies.jpg");
-  // imageRef
-  //   .getDownloadURL()
-  //   .then((url) => {
-  //     setImageUrl(url);
-  //   })
-  //   .catch((err) => console.log("Firebase Storage retrieval error:", err));
-
-  db.collection("markers")
-    .where("type", "==", display)
-    .onSnapshot((query) => {
-      const objs = [];
-      query.forEach((doc) => {
-        let docLat = doc.data().coordinates.latitude;
-        let docLon = doc.data().coordinates.longitude;
-        let test = {
-          coords: {
-            latitude: 40.78761,
-            longitude: -73.811391,
-          },
-        };
-        if (checkBoundaries(docLat, docLon, test)) {
-          objs.push({ id: doc.id, ...doc.data() });
-        }
-      });
-      setMarkers(objs);
-    });
+  useEffect(() => {
+    db.collection("markers")
+      .where("type", "==", display)
+      .get()
+      .then((query) => {
+        const objs = [];
+        query.forEach((doc) => {
+          let docLat = doc.data().coordinates.latitude;
+          let docLon = doc.data().coordinates.longitude;
+          if (checkBoundaries(docLat, docLon, location)) {
+            objs.push({ id: doc.id, ...doc.data() });
+          }
+        });
+        setMarkers(objs);
+      })
+      .catch((err) => console.log("Error getting Firestore documents:", err));
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -130,16 +118,18 @@ export default function MapScreen({
           >
             {markers.length ? (
               markers.map((marker, index) => {
+                let test = marker.title;
+                let image = images[test].uri;
                 return (
                   <View style={styles.card} key={marker.id}>
                     <TouchableWithoutFeedback
                       onPress={() => {
-                        setCurrentItem(index);
+                        setCurrentItem(marker);
                         setCurrentView("Item");
                       }}
                     >
                       <Image
-                        source={require("../assets/CanadaGoose.jpg")}
+                        source={image}
                         style={styles.cardImage}
                         resizeMode="cover"
                       />

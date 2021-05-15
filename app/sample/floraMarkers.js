@@ -10,7 +10,7 @@ module.exports = [
     seasonality: "Off-season",
     status: "Endangered",
     safety: "Dangerous",
-    category: "Flora",
+    type: "Flora",
   },
   {
     coordinates: {
@@ -23,7 +23,7 @@ module.exports = [
     seasonality: "Off-season",
     status: "Endangered",
     safety: "Dangerous",
-    category: "Flora",
+    type: "Flora",
   },
   {
     coordinates: {
@@ -36,7 +36,7 @@ module.exports = [
     seasonality: "Off-season",
     status: "Endangered",
     safety: "Dangerous",
-    category: "Flora",
+    type: "Flora",
   },
   {
     coordinates: {
@@ -49,7 +49,7 @@ module.exports = [
     seasonality: "Off-season",
     status: "Endangered",
     safety: "Dangerous",
-    category: "Flora",
+    type: "Flora",
   },
   {
     coordinates: {
@@ -62,6 +62,6 @@ module.exports = [
     seasonality: "Off-season",
     status: "Endangered",
     safety: "Dangerous",
-    category: "Flora",
+    type: "Flora",
   },
 ];

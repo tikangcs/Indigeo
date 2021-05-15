@@ -11,7 +11,6 @@ import { db, auth } from "./app/utils/firebase.js";
 export default function App() {
   const [currentView, setCurrentView] = useState("Home");
   const [currentItem, setCurrentItem] = useState(0);
-  const [markers, setMarkers] = useState([]);
   const [location, setLocation] = useState(null);
   const [signedIn, setSignedIn] = useState(auth.currentUser);
 
@@ -43,14 +42,9 @@ export default function App() {
       setLocation={setLocation}
       location={location}
       signedIn={signedIn}
-      markers={markers}
-      setMarkers={setMarkers}
     />
   ) : currentView === "Item" ? (
-    <DetailScreen
-      setCurrentView={setCurrentView}
-      currentItem={markers[currentItem]}
-    />
+    <DetailScreen setCurrentView={setCurrentView} currentItem={currentItem} />
   ) : currentView === "Profile" ? (
     <ProfileScreen setCurrentView={setCurrentView} setSignedIn={setSignedIn} />
   ) : (
