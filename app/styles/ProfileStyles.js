@@ -5,31 +5,40 @@ module.exports = {
   },
   header: {
     flex: 1.5,
-    marginTop: "5%",
+    marginTop: "2%",
+    flexDirection: "row",
     justifyContent: "center",
-    alignItems: "center",
   },
   profilePhotoContainer: {
-    flex: 5,
+    flex: 1.5,
+    justifyContent: "center",
     alignItems: "center",
   },
   profilePhoto: {
-    flex: 5,
-    borderRadius: 100,
-    resizeMode: "contain",
+    borderWidth: 1,
+    borderRadius: 10,
+    width: 150,
+    height: 150,
   },
   usernameContainer: {
-    flex: 3,
-    height: "25%",
+    flex: 2,
     justifyContent: "center",
   },
-  usernameText: {
-    fontSize: 40,
+  welcomeText: {
+    fontSize: 20,
     fontWeight: "bold",
+  },
+  usernameText: {
+    fontSize: 44,
+    fontWeight: "bold",
+  },
+  subtext: {
+    fontSize: 20,
   },
   favoritesContainer: {
     flex: 4,
     borderWidth: 1,
+    borderRadius: 5,
     margin: "2% 2%",
     alignItems: "center",
     padding: "0 3%",
@@ -51,6 +60,7 @@ module.exports = {
     margin: "1.5% 2%",
     alignItems: "center",
     borderWidth: 1,
+    borderRadius: 5,
     padding: "1%",
     backgroundColor: "peachpuff",
   },
@@ -73,10 +83,11 @@ module.exports = {
     justifyContent: "center",
     backgroundColor: "dodgerblue",
     borderWidth: 1,
+    borderRadius: 5,
   },
   continueText: {
     fontSize: 30,
-    fontWeight: "bold",
+    color: "white",
   },
   logout: {
     flex: 0.5,
@@ -85,6 +96,8 @@ module.exports = {
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "firebrick",
+    borderWidth: 1,
+    borderRadius: 5,
   },
   logoutText: {
     fontSize: 30,

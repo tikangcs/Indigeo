@@ -47,7 +47,7 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
             style={styles.loginInputs}
             label="Email"
             placeholder="Email"
-            placeholderTextColor={"rgba(0,128,0,0.8)"}
+            placeholderTextColor={"rgba(128,128,128,1.0)"}
             autoCorrect={false}
             autoCapitalize={"none"}
             maxLength={30}
@@ -68,7 +68,7 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
             style={styles.loginInputs}
             label="Password"
             placeholder="Password"
-            placeholderTextColor={"rgba(0,128,0,0.8)"}
+            placeholderTextColor={"rgba(128,128,128,1.0)"}
             autoCapitalize={"none"}
             autoCorrect={false}
             maxLength={15}

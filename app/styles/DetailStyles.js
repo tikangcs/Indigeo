@@ -1,6 +1,7 @@
 module.exports = {
   container: {
     flex: 1,
+    backgroundColor: "rgba(176,196,222,0.4)",
   },
   headerContainer: {
     flex: 6,
@@ -26,7 +27,8 @@ module.exports = {
     alignItems: "center",
   },
   image: {
-    borderWidth: 1,
+    borderWidth: 2,
+    borderRadius: 10,
     height: 270,
     width: 250,
   },
@@ -45,6 +47,7 @@ module.exports = {
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
+    borderRadius: 5,
     backgroundColor: "#f0e130",
   },
   tagBody: {
@@ -79,6 +82,7 @@ module.exports = {
     alignItems: "center",
     justifyContent: "center",
     borderWidth: 2,
+    borderRadius: 5,
     backgroundColor: "#abcdef",
     margin: "5% 1%",
   },

@@ -28,6 +28,7 @@ export default function App() {
         },
         (loc) => {
           setLocation(loc);
+          console.log(location);
         }
       );
     })();

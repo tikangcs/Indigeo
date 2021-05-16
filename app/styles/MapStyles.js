@@ -46,6 +46,7 @@ module.exports = {
   viewButtons: {
     flex: 2,
     borderWidth: 1,
+    borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
     marginHorizontal: "2%",
@@ -79,6 +80,7 @@ module.exports = {
     width: CARD_WIDTH,
     overflow: "hidden",
     borderWidth: 1,
+    borderRadius: 5,
     backgroundColor: "peachpuff",
   },
   cardImage: {

@@ -1,7 +1,9 @@
 module.exports = {
   username: "IndigeoUser",
+  membership: "Platinum Account",
   password: "demo",
-  profilePhoto: require("../assets/CanadaGoose.jpg"),
+  membersince: "Jan 15, 2021",
+  profilePhoto: require("../assets/hiker.jpg"),
   favorites: [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28b",

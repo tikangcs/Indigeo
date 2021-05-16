@@ -35,13 +35,19 @@ export default function ProfileScreen({ setCurrentView, setSignedIn }) {
           <Image style={styles.profilePhoto} source={user.profilePhoto} />
         </View>
         <View style={styles.usernameContainer}>
+          <Text style={styles.welcomeText}>Welcome back explorer</Text>
           <Text style={styles.usernameText} adjustsFontSizeToFit={true}>
             {user.username}
           </Text>
+          <Text></Text>
+          <Text style={styles.subtext}>{user.membership}</Text>
+          <Text style={styles.subtext}>Member since {user.membersince}</Text>
         </View>
       </View>
       <View style={styles.favoritesContainer}>
-        <Text style={styles.favoritesHeadingText}>Favorites</Text>
+        <Text style={styles.favoritesHeadingText}>
+          Favorites ({user.favorites.length})
+        </Text>
         <FlatList
           contentContainerStyle={styles.flatList}
           numColumns={3}

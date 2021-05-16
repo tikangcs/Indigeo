@@ -9,10 +9,17 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import DetailStyles from "../styles/DetailStyles";
+import images from "../sample/images";
 
 const styles = StyleSheet.create(DetailStyles);
 
 export default function DetailScreen({ setCurrentView, currentItem }) {
+  let imageurl = undefined;
+  for (let item in images) {
+    if (currentItem.title === item) {
+      imageurl = images[item].uri;
+    }
+  }
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -23,10 +30,7 @@ export default function DetailScreen({ setCurrentView, currentItem }) {
             </TouchableWithoutFeedback>
           </View>
           <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={require("../assets/Sunflower.jpg")}
-            />
+            <Image style={styles.image} source={imageurl} />
           </View>
           <View style={styles.title}>
             <Text style={styles.titleText}>{currentItem.title}</Text>
