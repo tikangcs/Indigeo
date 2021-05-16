@@ -28,7 +28,6 @@ export default function App() {
         },
         (loc) => {
           setLocation(loc);
-          console.log(location);
         }
       );
     })();
@@ -40,7 +39,6 @@ export default function App() {
     <MapScreen
       setCurrentView={setCurrentView}
       setCurrentItem={setCurrentItem}
-      setLocation={setLocation}
       location={location}
       signedIn={signedIn}
     />

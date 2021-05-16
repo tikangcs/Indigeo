@@ -73,7 +73,7 @@ module.exports = {
     alignItems: "center",
   },
   card: {
-    padding: "1%",
+    padding: 6,
     backgroundColor: "#FFF",
     marginHorizontal: 5,
     height: CARD_HEIGHT,
@@ -88,6 +88,8 @@ module.exports = {
     width: "100%",
     height: "100%",
     alignSelf: "center",
+    borderRadius: 5,
+    borderWidth: 1,
   },
   textContent: {
     flex: 1,

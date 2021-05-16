@@ -29,7 +29,6 @@ export default function MapScreen({
 }) {
   const [display, setDisplay] = useState("Flora");
   const [markers, setMarkers] = useState([]);
-
   useEffect(() => {
     db.collection("markers")
       .where("type", "==", display)
@@ -44,6 +43,7 @@ export default function MapScreen({
           }
         });
         setMarkers(objs);
+        console.log(objs[0].title);
       })
       .catch((err) => console.log("Error getting Firestore documents:", err));
   }, []);
@@ -59,7 +59,6 @@ export default function MapScreen({
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
-        // onRegionChangeComplete={(region) => setLocation({ coords: region })}
         style={styles.map}
         provider={"google"}
         mapType={"mutedStandard"}
@@ -76,11 +75,7 @@ export default function MapScreen({
         </View>
         {markers.map((marker, index) => {
           return (
-            <MapView.Marker
-              key={index}
-              title={"yes"}
-              coordinate={marker.coordinates}
-            >
+            <MapView.Marker key={index} coordinate={marker.coordinates}>
               <View style={styles.marker} />
             </MapView.Marker>
           );

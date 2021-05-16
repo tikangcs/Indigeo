@@ -66,6 +66,10 @@ module.exports = {
   },
   detailContainer: {
     flex: 5,
+    borderWidth: 1,
+    marginHorizontal: "2%",
+    padding: "1%",
+    backgroundColor: "white",
   },
   detailsCategories: {
     fontSize: 24,

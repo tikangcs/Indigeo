@@ -19,4 +19,8 @@ module.exports = {
     imgName: "Hydrangea",
     uri: require("../assets/Hydrangea.jpg"),
   },
+  Squirrel: {
+    imgName: "Squirrel",
+    uri: require("../assets/Squirrel.jpg"),
+  },
 };
