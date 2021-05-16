@@ -10,16 +10,22 @@ import {
 } from "react-native";
 import DetailStyles from "../styles/DetailStyles";
 import images from "../sample/images";
+import { db } from "../utils/firebase";
 
 const styles = StyleSheet.create(DetailStyles);
 
-export default function DetailScreen({ setCurrentView, currentItem }) {
-  let imageurl = undefined;
-  for (let item in images) {
-    if (currentItem.title === item) {
-      imageurl = images[item].uri;
-    }
-  }
+export default function DetailScreen({
+  setCurrentView,
+  currentItem,
+  signedIn,
+}) {
+  // const addFavorite = db
+  //   .collection("profile")
+  //   .doc("MSdZr5PKSlGyzqplsnzJ")
+  //   .update({ favorites: currentItem })
+  //   .then(() => console.log("write successful"))
+  //   .catch((err) => console.error("error writing file", err));
+
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -30,7 +36,10 @@ export default function DetailScreen({ setCurrentView, currentItem }) {
             </TouchableWithoutFeedback>
           </View>
           <View style={styles.imageContainer}>
-            <Image style={styles.image} source={imageurl} />
+            <Image
+              style={styles.image}
+              source={images[currentItem.title].uri}
+            />
           </View>
           <View style={styles.title}>
             <Text style={styles.titleText}>{currentItem.title}</Text>
@@ -74,16 +83,22 @@ export default function DetailScreen({ setCurrentView, currentItem }) {
         <View style={styles.detailContainer}>
           <Text style={styles.detailsCategories}>Scientific Name</Text>
           <Text style={styles.details}>{currentItem.description}</Text>
-          <Text style={styles.detailsCategories}>Fun Fact</Text>
+          <Text style={styles.detailsCategories}>Fun Facts</Text>
           <ScrollView>
             <Text style={styles.details}>{currentItem.funFacts}</Text>
           </ScrollView>
         </View>
-        <View style={styles.favoriteContainer}>
-          <TouchableWithoutFeedback>
-            <Text style={styles.favoriteButton}>Add to Favorite</Text>
-          </TouchableWithoutFeedback>
-        </View>
+        {signedIn ? (
+          <View style={styles.favoriteContainer}>
+            <TouchableWithoutFeedback
+              onPress={() => console.log("added to favorites")}
+            >
+              <Text style={styles.favoriteButton}>Add to Favorite</Text>
+            </TouchableWithoutFeedback>
+          </View>
+        ) : (
+          <></>
+        )}
       </SafeAreaView>
     </>
   );

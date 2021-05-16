@@ -31,6 +31,9 @@ module.exports = {
   usernameText: {
     fontSize: 44,
     fontWeight: "bold",
+    textShadowColor: "dodgerblue",
+    textShadowRadius: 2,
+    textShadowOffset: { width: 1, height: 1 },
   },
   subtext: {
     fontSize: 20,
@@ -40,17 +43,21 @@ module.exports = {
     borderWidth: 1,
     borderRadius: 5,
     margin: "2% 2%",
-    alignItems: "center",
     padding: "0 3%",
     backgroundColor: "tan",
+  },
+  favoritesHeadingContainer: {
+    marginVertical: "1%",
+    alignItems: "center",
   },
   favoritesHeadingText: {
     fontSize: 34,
     fontWeight: "bold",
+    textShadowColor: "honeydew",
+    textShadowRadius: 2,
+    textShadowOffset: { width: 1, height: 1 },
   },
-  flatList: {
-    alignItems: "center",
-  },
+  flatList: {},
   unfavorite: {
     position: "absolute",
     right: "5%",

@@ -1,5 +1,6 @@
 module.exports = {
-  username: "IndigeoUser",
+  username: "Tim Kang",
+  email: "indigeo@gmail.com",
   membership: "Platinum Account",
   password: "demo",
   membersince: "Jan 15, 2021",

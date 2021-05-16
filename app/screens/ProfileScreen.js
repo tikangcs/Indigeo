@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -11,18 +11,43 @@ import {
 } from "react-native";
 import user from "../utils/profile";
 import ProfileStyles from "../styles/ProfileStyles";
-import { auth } from "../utils/firebase";
+import images from "../sample/images";
+import { db, auth } from "../utils/firebase";
 
-const Item = ({ title, image, id }) => (
+const Item = ({ title, id }) => (
   <View style={styles.item}>
-    <ImageBackground style={styles.image} source={image} key={id} />
-    <Image style={styles.unfavorite} source={require("../assets/delete.png")} />
+    <ImageBackground style={styles.image} source={images[title].uri} key={id} />
+    <TouchableWithoutFeedback onPress={() => console.log("removed favorite")}>
+      <Image
+        style={styles.unfavorite}
+        source={require("../assets/delete.png")}
+      />
+    </TouchableWithoutFeedback>
     <Text style={styles.title}>{title}</Text>
   </View>
 );
 
-export default function ProfileScreen({ setCurrentView, setSignedIn }) {
-  const [profile, setProfile] = useState(undefined);
+export default function ProfileScreen({
+  setCurrentView,
+  signedIn,
+  setSignedIn,
+}) {
+  const [personalFavorites, setPersonalFavorites] = useState([]);
+
+  useEffect(() => {
+    db.collection("profile")
+      .where("email", "==", signedIn.email)
+      .get()
+      .then((query) => {
+        let favs;
+        query.forEach((doc) => (favs = doc.data().favorites));
+        setPersonalFavorites(favs);
+        console.log(personalFavorites);
+      })
+      .catch((err) =>
+        console.log("Error retreiving favorites from Firestore:", err)
+      );
+  }, []);
 
   const renderItem = ({ item }) => (
     <Item title={item.title} image={item.image} id={item.id} />
@@ -45,18 +70,20 @@ export default function ProfileScreen({ setCurrentView, setSignedIn }) {
         </View>
       </View>
       <View style={styles.favoritesContainer}>
-        <Text style={styles.favoritesHeadingText}>
-          Favorites ({user.favorites.length})
-        </Text>
+        <View style={styles.favoritesHeadingContainer}>
+          <Text style={styles.favoritesHeadingText}>
+            Favorites ({personalFavorites.length})
+          </Text>
+        </View>
         <FlatList
           contentContainerStyle={styles.flatList}
           numColumns={3}
           ListEmptyComponent={
             <View>
-              <Text>No Favorites</Text>
+              <Text>No Favorites Added Yet</Text>
             </View>
           }
-          data={user.favorites}
+          data={personalFavorites}
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
         />

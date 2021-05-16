@@ -5,7 +5,6 @@ import {
   ScrollView,
   Text,
   View,
-  Animated,
   Image,
   Dimensions,
   TouchableWithoutFeedback,
@@ -36,6 +35,7 @@ export default function MapScreen({
       .then((query) => {
         const objs = [];
         query.forEach((doc) => {
+          console.log(doc.data());
           let docLat = doc.data().coordinates.latitude;
           let docLon = doc.data().coordinates.longitude;
           if (checkBoundaries(docLat, docLon, location)) {
@@ -43,7 +43,6 @@ export default function MapScreen({
           }
         });
         setMarkers(objs);
-        console.log(objs[0].title);
       })
       .catch((err) => console.log("Error getting Firestore documents:", err));
   }, [display]);
@@ -76,10 +75,9 @@ export default function MapScreen({
         {markers.map((marker, index) => {
           return (
             <MapView.Marker key={index} coordinate={marker.coordinates}>
-              <Animated.View style={styles.ring}>
-                {/* <View style={styles.marker} /> */}
+              <View style={styles.ring}>
                 <Text style={styles.marker}>{index + 1}</Text>
-              </Animated.View>
+              </View>
             </MapView.Marker>
           );
         })}
@@ -107,7 +105,7 @@ export default function MapScreen({
           </View>
         </View>
         <View style={styles.scrollViewContainer}>
-          <Animated.ScrollView
+          <ScrollView
             horizontal
             scrollEventThrottle={1}
             showsHorizontalScrollIndicator={false}
@@ -148,7 +146,7 @@ export default function MapScreen({
                 <Text style={styles.searchingText}>Searching...</Text>
               </View>
             )}
-          </Animated.ScrollView>
+          </ScrollView>
         </View>
       </View>
     </SafeAreaView>

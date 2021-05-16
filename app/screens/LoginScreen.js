@@ -15,7 +15,7 @@ import LoginStyles from "../styles/LoginStyles";
 
 const styles = StyleSheet.create(LoginStyles);
 
-export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
+export default function LoginScreen({ setCurrentView, setSignedIn }) {
   const { control, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -24,6 +24,7 @@ export default function LoginScreen({ setCurrentView, signedIn, setSignedIn }) {
       .signInWithEmailAndPassword(email, password)
       .then((profile) => {
         setSignedIn(profile.user);
+        console.log(profile.user.email);
         setCurrentView("Profile");
       })
       .catch((err) => console.log(err));
