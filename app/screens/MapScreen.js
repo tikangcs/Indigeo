@@ -46,7 +46,7 @@ export default function MapScreen({
         console.log(objs[0].title);
       })
       .catch((err) => console.log("Error getting Firestore documents:", err));
-  }, []);
+  }, [display]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -76,7 +76,10 @@ export default function MapScreen({
         {markers.map((marker, index) => {
           return (
             <MapView.Marker key={index} coordinate={marker.coordinates}>
-              <View style={styles.marker} />
+              <Animated.View style={styles.ring}>
+                {/* <View style={styles.marker} /> */}
+                <Text style={styles.marker}>{index + 1}</Text>
+              </Animated.View>
             </MapView.Marker>
           );
         })}
@@ -131,7 +134,7 @@ export default function MapScreen({
                     </TouchableWithoutFeedback>
                     <View style={styles.textContent}>
                       <Text numberOfLines={1} style={styles.cardtitle}>
-                        {marker.title}
+                        {index + 1}. {marker.title}
                       </Text>
                       <Text numberOfLines={1} style={styles.cardDescription}>
                         {marker.description}

@@ -116,9 +116,17 @@ module.exports = {
     textShadowOffset: { width: 2, height: 2 },
   },
   marker: {
-    width: 13,
-    height: 13,
-    borderRadius: 5,
-    backgroundColor: "red",
+    fontSize: 16,
+    color: "honeydew",
+  },
+  ring: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "rgba(130,4,150, 0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "rgba(130,4,150, 0.5)",
   },
 };
