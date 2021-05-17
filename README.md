@@ -12,7 +12,7 @@ Indigeo is a fun and interactive mobile app that reveals nearby flora and fauna 
 
 # Screenshots
 
-<img src="./app/assets/screenshots/Indigeo-Home.png" width="35%" height="45%">
+<img src="./app/assets/screenshots/Indigeo-Home.png" width="25%" height="35%">
 
 # Components and Features
 
