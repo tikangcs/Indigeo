@@ -9,7 +9,7 @@ Fun and interactive mobile app that reveals nearby flora and fauna based on a us
 - Firebase
 
 # Screens
-![Home Screenshot](./assets/screenshots/Indigeo-Home.png "Home Screen")
+![Home Screenshot](./assets/screenshots/Indigeo-Home.png?raw=true "Home Screen")
 - Login / Profile
   - Authentication
   - Favorited Items
