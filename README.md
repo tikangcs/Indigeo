@@ -9,10 +9,6 @@ Indigeo is a fun and interactive mobile app that reveals nearby flora and fauna 
 - Expo
 - React-Native-Maps / Google Maps
 - Firebase
-<p align="center">
-  <img alt="logo" src="https://reactjs.org/favicon.ico"/>
-  <img alt="logo" src="https://github.com/expo/logos/blob/main/png/logo-wordmark.png"/>
-</p>
 
 # Components and Features
 
