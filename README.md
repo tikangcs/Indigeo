@@ -1,6 +1,6 @@
-# INDIGEO
+# Overview
 
-Fun and interactive mobile app that reveals nearby flora and fauna based on a user's geolocation
+Indigeo is a fun and interactive mobile app that reveals nearby flora and fauna based on a user's geolocation
 
 # Primary Technologies Featured
 
@@ -40,4 +40,4 @@ Fun and interactive mobile app that reveals nearby flora and fauna based on a us
   - Storage
   - Query
 
-#Installation
+#Requirements and Installation
