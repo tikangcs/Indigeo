@@ -10,7 +10,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { auth } from "../utils/firebase.js";
+import { auth } from "../utils/firebase";
 import LoginStyles from "../styles/LoginStyles";
 
 const styles = StyleSheet.create(LoginStyles);

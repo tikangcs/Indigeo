@@ -9,7 +9,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import DetailStyles from "../styles/DetailStyles";
-import images from "../sample/images";
+import images from "../utils/images";
 import { db } from "../utils/firebase";
 
 const styles = StyleSheet.create(DetailStyles);

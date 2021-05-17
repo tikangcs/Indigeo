@@ -13,7 +13,7 @@ import MapView from "react-native-maps";
 import MapStyles from "../styles/MapStyles";
 import checkBoundaries from "../utils/boundaries";
 import { db } from "../utils/firebase";
-import images from "../sample/images";
+import images from "../utils/images";
 
 const styles = StyleSheet.create(MapStyles);
 const { height } = Dimensions.get("window");

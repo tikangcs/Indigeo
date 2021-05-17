@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import * as Location from "expo-location";
 import * as Permissions from "expo-permissions";
-import HomeScreen from "./app/screens/HomeScreen.js";
-import LoginScreen from "./app/screens/LoginScreen.js";
-import ProfileScreen from "./app/screens/ProfileScreen.js";
-import MapScreen from "./app/screens/MapScreen.js";
-import DetailScreen from "./app/screens/DetailScreen.js";
-import { db, auth } from "./app/utils/firebase.js";
+import HomeScreen from "./app/screens/HomeScreen";
+import LoginScreen from "./app/screens/LoginScreen";
+import ProfileScreen from "./app/screens/ProfileScreen";
+import MapScreen from "./app/screens/MapScreen";
+import DetailScreen from "./app/screens/DetailScreen";
+import { db, auth } from "./app/utils/firebase";
 
 export default function App() {
   const [currentView, setCurrentView] = useState("Home");

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import user from "../utils/profile";
 import ProfileStyles from "../styles/ProfileStyles";
-import images from "../sample/images";
+import images from "../utils/images";
 import { db, auth } from "../utils/firebase";
 
 export default function ProfileScreen({
@@ -20,19 +20,6 @@ export default function ProfileScreen({
   setSignedIn,
 }) {
   const [personalFavorites, setPersonalFavorites] = useState([]);
-
-  const updateFavorite = (updatedList) => {
-    db.collection("profile")
-      .where("email", "==", signedIn.email)
-      .get()
-      .then(() => {
-        db.collection("profile")
-          .doc("MSdZr5PKSlGyzqplsnzJ")
-          .update({ favorites: updatedList });
-        setPersonalFavorites(updatedList);
-      })
-      .catch((err) => console.error("error writing file", err));
-  };
 
   const retrieveFavorite = () => {
     db.collection("profile")
@@ -46,6 +33,19 @@ export default function ProfileScreen({
       .catch((err) =>
         console.log("Error retreiving favorites from Firestore:", err)
       );
+  };
+
+  const updateFavorite = (updatedList) => {
+    db.collection("profile")
+      .where("email", "==", signedIn.email)
+      .get()
+      .then(() => {
+        db.collection("profile")
+          .doc("MSdZr5PKSlGyzqplsnzJ")
+          .update({ favorites: updatedList });
+        setPersonalFavorites(updatedList);
+      })
+      .catch((err) => console.error("error writing file", err));
   };
 
   useEffect(() => {
