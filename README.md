@@ -1,12 +1,18 @@
-#INDIGEO
-INTERACTIVE iOS APPLICATION THAT REVEALS NEARBY FLORA AND FAUNA BASED ON USERS' GEOLOCATION
+# INDIGEO
+Fun and interactive mobile app that reveals nearby flora and fauna based on a user's geolocation
 
-#EXPO / REACT NATIVE
+# Technologies Used
+- Javascript
+- React Native
+- Expo
+- React-Native-Maps / Google Maps
+- Firebase
 
+# Screens
+![Home Screenshot](/assets/screenshots/Indigeo-Home.png?raw=true "Home Screen")
 - Login / Profile
   - Authentication
   - Favorited Items
-  - Add new Photos
 - Screens
   - Home
   - Login
@@ -28,14 +34,5 @@ INTERACTIVE iOS APPLICATION THAT REVEALS NEARBY FLORA AND FAUNA BASED ON USERS' 
   - Based on current region view
   - Clustering
 
-#FIREBASE & SQLITE
+#FIREBASE
 
-- Schema
-- Data generation scripting
-  - Convert JSON to CSV
-  - Pixabay for images
-- ETL
-- API
-- Optimizations
-
-#TESTING
