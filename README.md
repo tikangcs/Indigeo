@@ -10,22 +10,6 @@ Indigeo is a fun and interactive mobile app that reveals nearby flora and fauna 
 - React-Native-Maps / Google Maps
 - Firebase
 
-# Screenshots
-
-<p float="left">
-  <img src="./app/assets/screenshots/Indigeo-Home.png" width="22%" height="30%">
-  <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="22%" height="30%">
-  <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="22%" height="30%">
-  <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="22%" height="30%">
-</p>
-
-
-Map View of Flora                                                                        |  Map View of Fauna
-:----------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------:
-<img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="250" height="500">  |  <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="250" height="500">
-
-
-
 # Components and Features
 
 - Login / Profile
@@ -52,4 +36,16 @@ Map View of Flora                                                               
   - Storage
   - Query
 
-#Requirements and Installation
+# Requirements and Installation
+
+# Screenshots
+
+<p float="left">
+  <img src="./app/assets/screenshots/Indigeo-Home.png" width="25%" height="25%">
+  <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="25%" height="25%">
+  <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="25%" height="25%">
+</p>
+
+|                                 Map View of Flora                                  |                                 Map View of Fauna                                  |                               Detail Page Example                                |
+| :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
+| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="250" height="500"> |
