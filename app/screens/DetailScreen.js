@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -19,12 +19,19 @@ export default function DetailScreen({
   currentItem,
   signedIn,
 }) {
-  // const addFavorite = db
-  //   .collection("profile")
-  //   .doc("MSdZr5PKSlGyzqplsnzJ")
-  //   .update({ favorites: currentItem })
-  //   .then(() => console.log("write successful"))
-  //   .catch((err) => console.error("error writing file", err));
+  const [favStatus, setFavStatus] = useState("Add to Favorites");
+  const addFavorite = () => {
+    db.collection("profile")
+      .doc("MSdZr5PKSlGyzqplsnzJ")
+      .get()
+      .then((doc) => {
+        db.collection("profile")
+          .doc("MSdZr5PKSlGyzqplsnzJ")
+          .update({ favorites: [...doc.data().favorites, currentItem] });
+        setFavStatus("Added!");
+      })
+      .catch((err) => console.error("error writing file", err));
+  };
 
   return (
     <>
@@ -90,10 +97,8 @@ export default function DetailScreen({
         </View>
         {signedIn ? (
           <View style={styles.favoriteContainer}>
-            <TouchableWithoutFeedback
-              onPress={() => console.log("added to favorites")}
-            >
-              <Text style={styles.favoriteButton}>Add to Favorite</Text>
+            <TouchableWithoutFeedback onPress={() => addFavorite()}>
+              <Text style={styles.favoriteButton}>{favStatus}</Text>
             </TouchableWithoutFeedback>
           </View>
         ) : (

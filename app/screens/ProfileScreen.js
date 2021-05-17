@@ -14,19 +14,6 @@ import ProfileStyles from "../styles/ProfileStyles";
 import images from "../sample/images";
 import { db, auth } from "../utils/firebase";
 
-const Item = ({ title, id }) => (
-  <View style={styles.item}>
-    <ImageBackground style={styles.image} source={images[title].uri} key={id} />
-    <TouchableWithoutFeedback onPress={() => console.log("removed favorite")}>
-      <Image
-        style={styles.unfavorite}
-        source={require("../assets/delete.png")}
-      />
-    </TouchableWithoutFeedback>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
 export default function ProfileScreen({
   setCurrentView,
   signedIn,
@@ -34,7 +21,20 @@ export default function ProfileScreen({
 }) {
   const [personalFavorites, setPersonalFavorites] = useState([]);
 
-  useEffect(() => {
+  const updateFavorite = (updatedList) => {
+    db.collection("profile")
+      .where("email", "==", signedIn.email)
+      .get()
+      .then(() => {
+        db.collection("profile")
+          .doc("MSdZr5PKSlGyzqplsnzJ")
+          .update({ favorites: updatedList });
+        setPersonalFavorites(updatedList);
+      })
+      .catch((err) => console.error("error writing file", err));
+  };
+
+  const retrieveFavorite = () => {
     db.collection("profile")
       .where("email", "==", signedIn.email)
       .get()
@@ -42,15 +42,44 @@ export default function ProfileScreen({
         let favs;
         query.forEach((doc) => (favs = doc.data().favorites));
         setPersonalFavorites(favs);
-        console.log(personalFavorites);
       })
       .catch((err) =>
         console.log("Error retreiving favorites from Firestore:", err)
       );
+  };
+
+  useEffect(() => {
+    retrieveFavorite();
   }, []);
 
   const renderItem = ({ item }) => (
-    <Item title={item.title} image={item.image} id={item.id} />
+    <View style={styles.item}>
+      <ImageBackground
+        style={styles.image}
+        source={images[item.title].uri}
+        key={item.id}
+      />
+      <TouchableWithoutFeedback
+        onPress={() => {
+          for (let obj of personalFavorites) {
+            if (obj.id === item.id) {
+              let favIndex = personalFavorites.indexOf(obj);
+              personalFavorites.splice(favIndex, 1);
+            }
+          }
+          updateFavorite(personalFavorites);
+          retrieveFavorite();
+        }}
+      >
+        <Image
+          style={styles.unfavorite}
+          source={require("../assets/delete.png")}
+        />
+      </TouchableWithoutFeedback>
+      <Text style={styles.title} adjustsFontSizeToFit={true}>
+        {item.title}
+      </Text>
+    </View>
   );
 
   return (
@@ -66,7 +95,7 @@ export default function ProfileScreen({
           </Text>
           <Text></Text>
           <Text style={styles.subtext}>{user.membership}</Text>
-          <Text style={styles.subtext}>Member since {user.membersince}</Text>
+          <Text style={styles.subtext}>Joined {user.membersince}</Text>
         </View>
       </View>
       <View style={styles.favoritesContainer}>
@@ -75,18 +104,22 @@ export default function ProfileScreen({
             Favorites ({personalFavorites.length})
           </Text>
         </View>
-        <FlatList
-          contentContainerStyle={styles.flatList}
-          numColumns={3}
-          ListEmptyComponent={
-            <View>
-              <Text>No Favorites Added Yet</Text>
-            </View>
-          }
-          data={personalFavorites}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id}
-        />
+        <View style={styles.flatList}>
+          <FlatList
+            contentContainerStyle={styles.flatList}
+            numColumns={3}
+            ListEmptyComponent={
+              <View style={styles.favoritesHeadingContainer}>
+                <Text style={styles.favoritesHeadingText}>
+                  No Items to Display
+                </Text>
+              </View>
+            }
+            data={personalFavorites}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+          />
+        </View>
       </View>
       <View style={styles.buttonsContainer}>
         <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>

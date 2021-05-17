@@ -13,7 +13,6 @@ export default function App() {
   const [currentItem, setCurrentItem] = useState(0);
   const [location, setLocation] = useState(null);
   const [signedIn, setSignedIn] = useState(auth.currentUser);
-  const [personalFavorites, setPersonalFavorites] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -48,15 +47,12 @@ export default function App() {
       setCurrentView={setCurrentView}
       currentItem={currentItem}
       signedIn={signedIn}
-      personalFavorites={personalFavorites}
-      setPersonalFavorites={setPersonalFavorites}
     />
   ) : currentView === "Profile" ? (
     <ProfileScreen
       setCurrentView={setCurrentView}
       signedIn={signedIn}
       setSignedIn={setSignedIn}
-      personalFavorites={personalFavorites}
     />
   ) : (
     <LoginScreen setCurrentView={setCurrentView} setSignedIn={setSignedIn} />

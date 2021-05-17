@@ -35,7 +35,6 @@ export default function MapScreen({
       .then((query) => {
         const objs = [];
         query.forEach((doc) => {
-          console.log(doc.data());
           let docLat = doc.data().coordinates.latitude;
           let docLon = doc.data().coordinates.longitude;
           if (checkBoundaries(docLat, docLon, location)) {
@@ -75,7 +74,12 @@ export default function MapScreen({
         {markers.map((marker, index) => {
           return (
             <MapView.Marker key={index} coordinate={marker.coordinates}>
-              <View style={styles.ring}>
+              <View
+                style={[
+                  styles.ring,
+                  display === "Fauna" ? styles.faunaRing : styles.floraRing,
+                ]}
+              >
                 <Text style={styles.marker}>{index + 1}</Text>
               </View>
             </MapView.Marker>
@@ -93,10 +97,14 @@ export default function MapScreen({
             </TouchableWithoutFeedback>
           </View>
           <View style={styles.uploadContainer}>
-            <Image
-              style={styles.upload}
-              source={require("../assets/add.png")}
-            />
+            <TouchableWithoutFeedback
+              onPress={() => console.log("coming soon")}
+            >
+              <Image
+                style={styles.upload}
+                source={require("../assets/add.png")}
+              />
+            </TouchableWithoutFeedback>
           </View>
           <View style={styles.viewButtons}>
             <TouchableWithoutFeedback onPress={() => setDisplay("Fauna")}>

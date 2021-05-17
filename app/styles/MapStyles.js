@@ -129,4 +129,10 @@ module.exports = {
     borderWidth: 1,
     borderColor: "rgba(130,4,150, 0.5)",
   },
+  floraRing: {
+    backgroundColor: "rgba(130,4,150, 0.5)",
+  },
+  faunaRing: {
+    backgroundColor: "rgba(51,109,38, 0.7)",
+  },
 };

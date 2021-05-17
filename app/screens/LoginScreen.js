@@ -24,7 +24,6 @@ export default function LoginScreen({ setCurrentView, setSignedIn }) {
       .signInWithEmailAndPassword(email, password)
       .then((profile) => {
         setSignedIn(profile.user);
-        console.log(profile.user.email);
         setCurrentView("Profile");
       })
       .catch((err) => console.log(err));
