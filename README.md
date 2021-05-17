@@ -2,13 +2,14 @@
 
 Indigeo is a fun and interactive mobile app that reveals nearby flora and fauna based on a user's geolocation
 
-# Primary Technologies Featured
+# Technologies Featured
 
 - Javascript
 - React Native
 - Expo
 - React-Native-Maps / Google Maps
 - Firebase
+<p align="center"><img alt="logo" src="https://reactjs.org/favicon.ico"/></p>
 
 # Components and Features
 
