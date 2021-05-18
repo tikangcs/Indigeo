@@ -33,6 +33,11 @@ Users are greeted with an alluring background image and a custom designed logo u
 ## Login Screen
 The bare features of this application can be enjoyed as a guest, but registered users have access to additional features. Returning users looking for their accounts will have to login using their registered email and password combination. The forms on this page validate the inputs before authenticating it through the Firebase authentication service. Once a user is successfully logged in, the user is redirected to the user profile screen. 
 
+You cannot create a new account at this time but use the following credentials to login:
+        
+        email: indigeo@gmail.com
+        password: indigeo
+
 ## Profile Screen
 The profile screen displays personalized information about the logged in user. Most notably, the profile screen features a collection of favorites that the user has added previously or during the current session. The user has the ability to remove items from the list by tapping on the delete icon in the upper right corner of the card image. The CRUD operations are performed on persistent data that is stored and managed in a Firestore instance. 
 
