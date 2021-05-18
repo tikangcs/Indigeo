@@ -38,7 +38,7 @@ The profile screen displays personalized information about the logged in user. M
 
 The session will persist until the user explicitly logs out or closes the app. 
 
-## Screenshots
+## Screenshots (set 1 of 2)
 
 |                                  Home Screen                                   |                                  Login Screen                                   |                                  Profile Screen                                   |
 | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
@@ -55,7 +55,7 @@ Both logged in users and guest users will see a profile icon in the upper right 
 ## Detail Screen
 Users have the ability to pull up additional information about any of the nearby items by simply pressing the screen. Pressing on one of the cards will render the details of the item that includes information in both text and tag formats. Logged in users will also see an 'Add to Favorites' button, while guest users will not have that button. Pressing the button will update the favorites list and the text will change to 'Added!'   
   
-## Screenshots
+## Screenshots (set 2 of 2)
 |                                 Map View of Flora                                  |                                 Map View of Fauna                                  |                               Detail Page Example                                |
 | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
 | <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="250" height="500"> |
