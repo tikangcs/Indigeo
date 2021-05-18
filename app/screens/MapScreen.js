@@ -28,6 +28,13 @@ export default function MapScreen({
 }) {
   const [display, setDisplay] = useState("Flora");
   const [markers, setMarkers] = useState([]);
+  location = location || {
+    coords: {
+      latitude: 40.79156443798839,
+      longitude: -73.81136196381692,
+    },
+  };
+
   useEffect(() => {
     db.collection("markers")
       .where("type", "==", display)
