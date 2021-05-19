@@ -56,7 +56,7 @@ The session will persist until the user explicitly logs out or closes the app.
 
 |                                  Home Screen                                   |                                  Login Screen                                   |                                  Profile Screen                                   |
 | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-Home.png" width="80%" height="470"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="80%" height="470"> | <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="80%" height="470"> |
+| <img src="./app/assets/screenshots/Indigeo-Home.png" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="80%" height="500"> |
 
 
 ## Map Screen
@@ -72,5 +72,5 @@ Users have the ability to pull up additional information about any of the nearby
 ## Screenshots (set 2 of 2)
 |                                 Map View of Flora                                  |                                 Map View of Fauna                                  |                               Detail Page Example                                |
 | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="80%" height="470"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="80%" height="470"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="80%" height="470"> |
+| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="80%" height="500"> |
 
