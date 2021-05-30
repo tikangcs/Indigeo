@@ -2,6 +2,15 @@
 Indigeo is a fun and interactive full stack mobile app that reveals nearby flora and fauna based on a user's geolocation.
 
 ## Technologies Featured
+
+<p float="left">
+    <img src="./app/assets/stack/javascript.svg" width="5%" height="5%">
+    <img src="./app/assets/stack/react.svg" width="5%" height="5%">
+    <img src="./app/assets/stack/expo.svg" width="5%" height="5%">
+    <img src="./app/assets/stack/googlemaps.svg" width="5%" height="5%">
+    <img src="./app/assets/stack/firebase.svg" width="5%" height="5%">
+<p>
+
 The application is developed for iOS mobile devices using React Native and Expo with thoughtful consideration and use of current React best practices: functional components using hooks and corresponding lifecycle methods, conditional rendering/styling, event handling, event-driven state, prop drilling and code splitting. The code base was built with a deliberate and conscious effort to write modular, reusable code. 
 
 Undoubtedly, the main attraction of this app revolves around the features provided over a geographic map. The map in this app is powered by Google Maps through the React-Native-Maps package (https://github.com/react-native-maps/react-native-maps). Amongst the abundant features provided by this package, the MapView and Markers APIs are the components on which the main features of this application were built.
@@ -47,7 +56,7 @@ The session will persist until the user explicitly logs out or closes the app.
 
 |                                  Home Screen                                   |                                  Login Screen                                   |                                  Profile Screen                                   |
 | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-Home.png" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="250" height="500"> |
+| <img src="./app/assets/screenshots/Indigeo-Home.png" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Profile.PNG" width="80%" height="500"> |
 
 
 ## Map Screen
@@ -63,5 +72,5 @@ Users have the ability to pull up additional information about any of the nearby
 ## Screenshots (set 2 of 2)
 |                                 Map View of Flora                                  |                                 Map View of Fauna                                  |                               Detail Page Example                                |
 | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="250" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="250" height="500"> |
+| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="80%" height="500"> |
 
