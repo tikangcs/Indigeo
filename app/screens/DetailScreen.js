@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from "react-native";
+import tagHeaders from "../components/tagHeaders";
 import DetailStyles from "../styles/DetailStyles";
 import images from "../utils/images";
 import { db } from "../utils/firebase";
@@ -53,39 +54,9 @@ export default function DetailScreen({
           </View>
         </View>
         <View style={styles.tagContainer}>
-          <TouchableWithoutFeedback>
-            <View style={styles.tags}>
-              <View style={styles.tagHeader}>
-                <Text style={styles.tagHeaderText}> Seasonality </Text>
-              </View>
-              <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}>
-                  {" "}
-                  {currentItem.seasonality}{" "}
-                </Text>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.tags}>
-              <View style={styles.tagHeader}>
-                <Text style={styles.tagHeaderText}> Status </Text>
-              </View>
-              <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}> {currentItem.status} </Text>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback>
-            <View style={styles.tags}>
-              <View style={styles.tagHeader}>
-                <Text style={styles.tagHeaderText}> Safety Rating </Text>
-              </View>
-              <View style={styles.tagBody}>
-                <Text style={styles.tagBodyText}> {currentItem.safety} </Text>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
+          {tagHeaders("Seasonality", styles, currentItem.seasonality)}
+          {tagHeaders("Status", styles, currentItem.status)}
+          {tagHeaders("Safety Rating", styles, currentItem.safety)}
         </View>
         <View style={styles.detailContainer}>
           <Text style={styles.detailsCategories}>Scientific Name</Text>
