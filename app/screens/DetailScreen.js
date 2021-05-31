@@ -54,9 +54,9 @@ export default function DetailScreen({
           </View>
         </View>
         <View style={styles.tagContainer}>
-          {tagHeaders("Seasonality", styles, currentItem.seasonality)}
-          {tagHeaders("Status", styles, currentItem.status)}
-          {tagHeaders("Safety Rating", styles, currentItem.safety)}
+          {tagHeaders(styles, "Seasonality", currentItem.seasonality)}
+          {tagHeaders(styles, "Status", currentItem.status)}
+          {tagHeaders(styles, "Safety Rating", currentItem.safety)}
         </View>
         <View style={styles.detailContainer}>
           <Text style={styles.detailsCategories}>Scientific Name</Text>

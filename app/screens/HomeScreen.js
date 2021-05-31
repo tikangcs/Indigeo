@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import HomeStyles from "../styles/HomeStyles";
+import homeButtons from "../components/homeButtons";
 
 const styles = StyleSheet.create(HomeStyles);
 
@@ -19,16 +20,8 @@ export default function HomeScreen({ setCurrentView }) {
     >
       <Image style={styles.logo} source={require("../assets/Logo.png")} />
       <View style={styles.buttonContainer}>
-        <TouchableWithoutFeedback onPress={() => setCurrentView("Login")}>
-          <View style={styles.buttons}>
-            <Text style={styles.buttonText}>LOGIN</Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => setCurrentView("Map")}>
-          <View style={styles.buttons}>
-            <Text style={styles.buttonText}>GUEST</Text>
-          </View>
-        </TouchableWithoutFeedback>
+        {homeButtons(styles, () => setCurrentView("Login"), "LOGIN")}
+        {homeButtons(styles, () => setCurrentView("Map"), "GUEST")}
       </View>
     </ImageBackground>
   );

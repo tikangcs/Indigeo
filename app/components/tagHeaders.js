@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableWithoutFeedback } from "react-native";
 
-const tagHeaders = (title, styling, property) => {
+const tagHeaders = (styling, title, property) => {
   return (
     <TouchableWithoutFeedback>
       <View style={styling.tags}>
