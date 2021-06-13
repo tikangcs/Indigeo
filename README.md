@@ -72,5 +72,5 @@ Users have the ability to pull up additional information about any of the nearby
 ## Screenshots (set 2 of 2)
 |                                 Map View of Flora                                  |                                 Map View of Fauna                                  |                               Detail Page Example                                |
 | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG" width="80%" height="500"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG" width="80%" height="500"> |
+| <img src="./app/assets/screenshots/Indigeo-FloraMap.PNG"> | <img src="./app/assets/screenshots/Indigeo-FaunaMap.PNG"> | <img src="./app/assets/screenshots/Indigeo-Detail.PNG"> |
 
