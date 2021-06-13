@@ -56,7 +56,7 @@ The session will persist until the user explicitly logs out or closes the app.
 
 |                                  Home Screen                                   |                                  Login Screen                                   |                                  Profile Screen                                   |
 | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| <img src="./app/assets/screenshots/Indigeo-Home.png"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG"| <img src="./app/assets/screenshots/Indigeo-Profile.PNG"|
+| <img src="./app/assets/screenshots/Indigeo-Home.png"> | <img src="./app/assets/screenshots/Indigeo-Login.PNG"> | <img src="./app/assets/screenshots/Indigeo-Profile.PNG">|
 
 
 ## Map Screen
