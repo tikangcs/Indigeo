@@ -24,7 +24,7 @@ export default function App() {
       Location.watchPositionAsync(
         {
           accuracy: Location.Accuracy.High,
-          distanceInterval: 4600,
+          distanceInterval: 160,
         },
         (loc) => {
           setLocation(loc);
