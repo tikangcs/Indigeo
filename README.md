@@ -11,11 +11,11 @@ Indigeo is a fun and interactive full stack mobile app that reveals nearby flora
     <img src="./app/assets/stack/firebase.svg" width="5%" height="5%">
 <p>
 
-The application is developed for iOS mobile devices using React Native and Expo with thoughtful consideration and use of current React best practices: functional components using hooks and corresponding lifecycle methods, conditional rendering/styling, event handling, event-driven state, prop drilling and code splitting. The code base was built with a deliberate and conscious effort to write modular, reusable code. 
+The application is developed for iOS mobile devices using React Native and Expo with thoughtful consideration and use of current React best practices: functional components using hooks and corresponding lifecycle methods, conditional rendering/styling, event handling, and event-driven state. 
 
-Undoubtedly, the main attraction of this app revolves around the features provided over a geographic map. The map in this app is powered by Google Maps through the React-Native-Maps package (https://github.com/react-native-maps/react-native-maps). Amongst the abundant features provided by this package, the MapView and Markers APIs are the components on which the main features of this application were built.
+The main attraction of this app revolves around the features provided over a geographic map. The map in this app is powered by Google Maps through the React-Native-Maps package (https://github.com/react-native-maps/react-native-maps). Amongst the features provided by this package, the MapView and Markers APIs are the primary kits on which the main features of this application were built.
 
-The backend is configured to the database and authentication services provided by Firebase. As a mobile application that dynamically responds to changes in the users' geographic coordinates, the application data needs to be accessible anywhere at anytime. Hence, as a cloud-based serverless backend solution, Firebase is the clear cut answer to meet the data requirements of this application. 
+The backend is configured to the database and authentication services provided by Firebase. As a mobile application that dynamically responds to changes in the users' geographic coordinates, the application data needs to be accessible anywhere at anytime. Hence, as a cloud-based serverless backend solution, Firebase was the clear cut answer to meet the data requirements of this application. 
 
 ## Getting Started
 Installation and setup is relatively simple. However, please ensure you have the following prerequisite programs on your current machine to ensure a smooth experience getting started. 
@@ -40,7 +40,7 @@ Users are greeted with an alluring background image and a custom designed logo u
     2. Guest => Map screen for those who simply want to sample the app
 
 ## Login Screen
-The bare features of this application can be enjoyed as a guest, but registered users have access to additional features. Returning users looking for their accounts will have to login using their registered email and password combination. The forms on this page validate the inputs before authenticating it through the Firebase authentication service. Once a user is successfully logged in, the user is redirected to the user profile screen. 
+The baseline features of this application can be enjoyed as a guest, but registered users have access to additional features. Returning users looking for their accounts will have to login using their registered email and password combination. The forms on this page validate the inputs before authenticating it through the Firebase authentication service. Once a user is successfully logged in, the user is redirected to the user profile screen. 
 
 You cannot create a new account at this time but use the following credentials to login:
         
@@ -62,7 +62,7 @@ The session will persist until the user explicitly logs out or closes the app.
 ## Map Screen
 Users are presented with a list of the nearby plants and animals that can be geographically traced to markers on a map. There is currently no feature to view both of them concurrently, hence users must toggle between viewing one over the other.
 
-Using asynchronous calls to the location API, the app captures the user's current coordinates and presents it on an instance of Google Maps. Concurrently, the application conditionally renders items that fall within the user's proximity. This geofence has been defined as +/- 0.01 degrees in both latitude and longitude. User movements are tracked and updates to the location will trigger updates to the map, the markers, and the corresponding list. 
+Using asynchronous calls to a location API, the app captures the user device's current coordinates and presents it on an instance of Google Maps. Concurrently, the application conditionally renders items that fall within the user's proximity. This geofence has been defined as +/- 0.01 degrees in both latitude and longitude. User movements are tracked and updates to the location will trigger updates to the map, the markers, and the corresponding list. 
 
 Both logged in users and guest users will see a profile icon in the upper right hand corner of the map. When logged in users press that icon, they will be redirected to their profile screen. Guest users will be redirected to the login screen. 
 
